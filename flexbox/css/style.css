@@ -1,0 +1,18 @@
+#container{
+background-color: blue;
+display:flex;
+justify-content: space-around;
+height:500px;
+align-items: flex-end;
+}
+
+.item{
+    background-color: orange;
+    height:100px;
+flex-basis:10%;
+
+}
+
+.bigger{
+    flex-basis:20%
+}
