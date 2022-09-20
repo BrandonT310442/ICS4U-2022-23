@@ -48,7 +48,7 @@ transition:0.5s;
 }
 
 .logo:hover{
-    width:2.5%;
+    width: 250px;
     height:55%;
    background:url('../images/logo2.png') no-repeat;
    background-size: contain;
@@ -164,7 +164,16 @@ cursor:pointer;
       .navbar ul{
         display: none;
       }
-     nav input:checked ~ .container ul{
+
+     
+      #hamburger:checked ~ .navbar ul{
 display: block;
+padding-top:100px;
+line-height: 2.5em;
+
 }
-    }
+
+#hamburger:checked ~ .navbar{
+    height:500px;
+}
+}
