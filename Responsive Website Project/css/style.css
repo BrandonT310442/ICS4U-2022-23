@@ -16,19 +16,17 @@ ul{
     list-style-type:none;
 }
 
-.grid{
-    display:grid;
-    grid-template-columns: 1fr repeat(2,minmax(auto,25em)) 1fr;
-}
+
 .container{
 width:100%;
     margin:0;
     padding:0;
     padding-left: 20px;
     padding-right:50px;
+    
 }
 .navbar{
-    position: fixed;
+    
   width: 100%;
   top: 0;
   left: 0;
@@ -40,7 +38,8 @@ width:100%;
 
 
 .logo{
-    width:2.5%;
+    /*width:2.5%;*/
+    width: 250px;
     height:55%;
    background:url('../images/logo.png') no-repeat;
    background-size: contain;
@@ -125,6 +124,10 @@ cursor:pointer;
 
 }
 
+.navbar label, #hamburger{
+    display: none;
+} 
+
 @media(max-width:768px){
  
 /*Prevents overflow*/
@@ -135,4 +138,33 @@ cursor:pointer;
            -moz-box-sizing: border-box;
                 box-sizing: border-box;
     }
+
+  
+    .navbar ul{
+        box-sizing: border-box;
+        display: block;
+        width: 100% ;
+        border-top: 1px solid #333;
+      }
+   
+     
+      /* (B) SHOW HAMBURGER ICON */
+      .navbar label { 
+        display: inline-block; 
+        color: white;
+        background: #a02620;
+        font-style: normal;
+        font-size: 1.2em;
+        padding: 10px;
+      }
+    
+      /* (C) TOGGLE SHOW/HIDE MENU */
+     
+     
+      .navbar ul{
+        display: none;
+      }
+     nav input:checked ~ .container ul{
+display: block;
 }
+    }
