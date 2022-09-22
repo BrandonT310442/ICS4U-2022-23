@@ -11,7 +11,10 @@ body{
 
     color:white;
     font-family: 'Montserrat', sans-serif;
+    background-color: #242526;
 }
+
+
 ul{
     list-style-type:none;
 }
@@ -34,24 +37,27 @@ width:100%;
     color:white;
     height:60px;
     z-index: 1;
+    transition:0.5s;
+    position: absolute;
 }
 
 
 .logo{
     /*width:2.5%;*/
-    width: 250px;
-    height:55%;
+    width: 30px;
+    /*height:55%;*/
+    height: 30px;
    background:url('../images/logo.png') no-repeat;
-   background-size: contain;
+   background-size: cover;
 z-index:5;
 transition:0.5s;
 }
 
 .logo:hover{
-    width: 250px;
-    height:55%;
+    width: 30px;
+    height: 30px;
    background:url('../images/logo2.png') no-repeat;
-   background-size: contain;
+   background-size: cover;
 z-index:5;
 transition:0.5s;
 cursor:pointer;
@@ -92,7 +98,7 @@ cursor:pointer;
 }
 
 #showcase{
-    min-height: 450px;
+    min-height: 500px;
     color:white;
     text-align: center;    
 }
@@ -100,17 +106,18 @@ cursor:pointer;
 
 
 #showcase .bg-image{
+  
     object-fit: cover;
     background: no-repeat;
     background-size: cover; 
    width:100%;
-   height: 100vh;
+   height: 100%;
    display: flex;
    align-items: center;
    justify-content: center;
    z-index: -1;
    opacity:0.7;
-   position: absolute;
+   position: relative;
 
 }
 
@@ -118,9 +125,14 @@ cursor:pointer;
     font-family: chinese-rocks, sans-serif;
     font-size: 200px;
     letter-spacing: 50px;
-    padding-top:15%;
-    text-align: center;
-    
+    padding-top:10%;
+   position: absolute;
+   top:0;
+   margin-left: auto;
+margin-right: auto;
+left: 0;
+right: 0;
+   transition:0.5s;
 
 }
 
@@ -128,7 +140,102 @@ cursor:pointer;
     display: none;
 } 
 
-@media(max-width:768px){
+
+.row {
+    display: grid;
+    grid-template-columns: 33.3% 33.3% 33.3%;
+grid-row-gap: 250px;
+margin-top:25px;
+  }
+  .column {
+    padding: 16px;
+    height: 250px;
+  }
+
+#grid2dwrap{
+    margin-top:150px;
+    font-family: 'Montserrat', sans-serif;
+font-weight: 300;
+}
+
+
+
+#pascal{
+    height:218px;
+    width:300px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+
+#fred{
+    height:218px;
+    width:300px;
+    margin-left: auto;
+  margin-right: auto;
+  display: block;
+
+}
+
+
+#ptslead{
+    text-align: center;
+
+}
+
+#assistlead{
+    text-align: center;
+}
+
+#ptspascal{
+  
+   text-align: center;
+   padding-top:50px;
+}
+#astfred{
+  
+    text-align: center;
+    padding-top:50px;
+ }
+
+#gridwraptext{
+text-align: center;
+color:red;
+font-size: 50px;
+}
+
+#rapslogo {
+text-align: center;
+width:146px;
+height:145px;
+margin-left: auto;
+margin-right: auto;
+display: block;
+margin-top:50px;
+}
+
+
+#retrologo {
+    text-align: center;
+    width:295.38px;
+    height:166.15px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    margin-top:50px;
+    }
+
+@media(max-width:960px){
+    #we-the-north{
+        /*Overrides previous css*/
+        font-size: 150px !important;
+        letter-spacing: 30px;
+        padding-left:13px;
+        padding-top:12.5% !important;
+    }
+}
+@media(max-width:850px){
  
 /*Prevents overflow*/
     body {
@@ -139,12 +246,54 @@ cursor:pointer;
                 box-sizing: border-box;
     }
 
-  
+    .row{
+        display: block;
+    }
+
+    #grid2dwrap{
+        margin-top:0px;
+      
+    }
+
+    #gridwraptext{
+        text-align: center;
+        color:red;
+        font-size: 35px;
+        }
+
+    #assistlead{
+        margin-top:200px;
+    }
+
+    #rapslogo {
+        text-align: center;
+        width:146px;
+        height:145px;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+        margin-top:150px;
+        }
+
+    #we-the-north{
+        /*Overrides previous css*/
+        font-size: 100px !important;
+        letter-spacing: 30px;
+        padding-left:13px;
+        padding-top:12.5% !important;
+    }
+
+    .navbar{
+        position: static;
+    }
+   
     .navbar ul{
         box-sizing: border-box;
         display: block;
-        width: 100% ;
+        width: 800px ;
         border-top: 1px solid #333;
+        z-index: 10;
+
       }
    
      
@@ -152,10 +301,17 @@ cursor:pointer;
       .navbar label { 
         display: inline-block; 
         color: white;
-        background: #a02620;
         font-style: normal;
         font-size: 1.2em;
         padding: 10px;
+        transition: 0.5s;
+        z-index: 10;
+      }
+
+      .navbar label:hover{
+        color:red;
+        transition: 0.5s;
+        cursor:pointer;
       }
     
       /* (C) TOGGLE SHOW/HIDE MENU */
@@ -163,6 +319,8 @@ cursor:pointer;
      
       .navbar ul{
         display: none;
+        transition:0.5s;
+
       }
 
      
@@ -170,10 +328,52 @@ cursor:pointer;
 display: block;
 padding-top:100px;
 line-height: 2.5em;
+transition:0.5s;
 
 }
+
+#hamburger:checked ~ #showcase .content-wrap #we-the-north{
+margin-top: 500px;
+transition:0.5s;
+    }
 
 #hamburger:checked ~ .navbar{
     height:500px;
+    transition:0.5s;
+
 }
+#hamburger:checked ~ .navbar .container .logo{
+margin-top:-400px;
+position: absolute;
+}
+#hamburger:checked ~ .navbar .container label{
+    margin-top:-400px;
+    left:0px;
+    }
+   
+
+    @media(max-width:580px){
+
+        body{
+            width:100%;
+        }
+        #we-the-north{
+            /*Overrides previous css*/
+            font-size: 65px !important;
+            padding-top:25% !important;
+            text-align: center !important;
+            letter-spacing: 20px !important;
+        }
+
+        #grid2dwrap{
+            margin-top:-200px !important;
+          
+        }
+
+        #hamburger:checked ~ #showcase .content-wrap #we-the-north{
+            margin-top: 450px !important;
+            transition:0.5s;
+                }
+    }
+
 }
