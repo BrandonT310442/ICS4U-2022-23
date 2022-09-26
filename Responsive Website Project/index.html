@@ -10,26 +10,28 @@
     <title>Toronto Raptors || Official Website</title>
     <link rel="stylesheet" type="text/css" href="./css/style.css">
     <link rel="stylesheet" href="https://use.typekit.net/tih4tyz.css">
-</head>
+<!-- Add icon library -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
 <body>
   <input type="checkbox" id="hamburger"/>
 
     <nav class="navbar">
 
         <div class="container">
-            <div class="logo"></div>
+          <a href="index.html"><div class="logo"></div></a>
           <ul class="nav">
             <li>
-              <a href="#">ROSTER</a>
+              <a href="roster.html">ROSTER</a>
             </li>
             <li>
-              <a href="#">SCHEDULE</a>
+              <a href="schedule.html">SCHEDULE</a>
             </li>
             <li>
               <a href="#">STORE</a>
             </li>
             <li>
-                <a href="#">CHAMPIONSHIP SEASON</a>
+                <a href="championshipseason.html">CHAMPIONSHIP SEASON</a>
               </li>
           </ul>
           <label for="hamburger">&#9776;</label>
@@ -51,30 +53,38 @@
      <img id="pascal"src="./images/pascalsiakam.png"/>
      <h2 id="ptspascal">22.8 PPG</h2>
 	  </div>
-    <div class="column">
-    <img id="rapslogo" src="./images/logo2.png"/>
-  </div>
+    
 	  <div class="column">
 	   <h2 id="assistlead">2021-2022 ASSIST LEADER</h2>
      <img id="fred"src="./images/fredvanvleet.png"/>
      <h2 id="astfred">6.7 APG</h2>
 	  </div>
 
-    <div class="column">
-      <h2 id="ptslead">ALL TIME POINTS LEADER</h2>
-      <img id="pascal"src="./images/derozan.png"/>
-      <h2 id="ptspascal">13,296 PTS</h2>
+    <div id="nextcolumn" class="column">
+      <h2 id="allptslead">ALL TIME POINTS LEADER</h2>
+      <img id="derozan"src="./images/derozan.png"/>
+      <h2 id="ptsderozan">13,296 PTS</h2>
      </div>
+    
      <div class="column">
-     <img id="retrologo" src="./images/retrologo.png"/>
-   </div>
-     <div class="column">
-      <h2 id="assistlead">ALL TIME ASSIST LEADER</h2>
-      <img id="fred"src="./images/lowrypng.png"/>
-      <h2 id="astfred">4,277 AST</h2>
+      <h2 id="allassistlead">ALL TIME ASSIST LEADER</h2>
+      <img id="lowry"src="./images/lowrypng.png"/>
+      <h2 id="astlowry">4,277 AST</h2>
      </div>
 </div>
 </div>
+<h2 id="subscribe">SUBSCRIBE</h2>
+<form>
+  <input type="email" name="email" autocomplete="off">
+  <button type="submit">SUBSCRIBE!</button>
+</form>
+<footer id="main-footer">
+  <div>TORONTO RAPTORS ⓒ 2022</div>
+  <a href="https://www.instagram.com/raptors" class="fa fa-instagram"></a>
+  <a href="https://www.twitter.com/raptors" class="fa fa-twitter"></a>
+  <a href="https://www.youtube.com/c/TorontoRaptors/videos" class="fa fa-youtube-play"></a>
+  <a href="https://www.facebook.com/TorontoRaptors/" class="fa fa-facebook"></a>
+</footer>
 
 </body>
 </html>

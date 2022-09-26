@@ -1,0 +1,495 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap');
+*{
+    box-sizing: border-box;
+    margin:0;
+    padding:0;
+}
+
+
+body{
+
+    color:white;
+    font-family: 'Montserrat', sans-serif;
+    background-color: #242526;
+}
+
+
+ul{
+    list-style-type:none;
+}
+
+
+.container{
+width:100%;
+    margin:0;
+    padding:0;
+    padding-left: 20px;
+    padding-right:50px;
+    
+}
+.navbar{
+    
+  width: 100%;
+  top: 0;
+  left: 0;
+    background:#242526;
+    color:white;
+    height:60px;
+    z-index: 1;
+    transition:0.5s;
+    position: absolute;
+}
+
+
+.logo{
+    /*width:2.5%;*/
+    width: 30px;
+    /*height:55%;*/
+    height: 30px;
+   background:url('../images/logo.png') no-repeat;
+   background-size: cover;
+z-index:5;
+transition:0.5s;
+}
+
+.logo:hover{
+    width: 30px;
+    height: 30px;
+   background:url('../images/logo2.png') no-repeat;
+   background-size: cover;
+z-index:5;
+transition:0.5s;
+cursor:pointer;
+}
+
+
+.navbar a{
+    color:white;
+    text-decoration: none;
+    font-size: 18px;
+    transition: 0.5s;
+
+}
+.navbar .container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height:100%
+}
+
+.navbar .container .logo{
+   margin:0;
+}
+
+.navbar ul{
+    display:flex;
+}
+
+.navbar ul li{
+    margin-left:20px;
+}
+
+.navbar a:hover{
+    color:red;
+    transition: 0.5s;
+    text-decoration: underline;
+    text-underline-offset: 15px;
+}
+
+footer {
+    display: block;
+  }
+
+#showcase{
+    min-height: 500px;
+    color:white;
+    text-align: center;    
+}
+
+
+
+#showcase .bg-image{
+  
+    object-fit: cover;
+    background: no-repeat;
+    background-size: cover; 
+   width:100%;
+   height: 100%;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   z-index: -1;
+   opacity:0.7;
+   position: relative;
+
+}
+
+#main-footer{
+    display: block;
+margin-top: 50px;
+    background-color:#696969;
+    color:white;
+    text-align: center;
+    font-size: 17px;
+}
+
+#main-footer a{
+    text-decoration: none;
+    color:white;
+    transition: 0.5s;
+    letter-spacing: 10px;
+}
+
+#main-footer a:hover{
+    transition: 0.5s;
+    color: red;
+}
+
+
+#showcase h1{
+    font-family: chinese-rocks, sans-serif;
+    font-size: 200px;
+    letter-spacing: 50px;
+    padding-top:10%;
+   position: absolute;
+   top:0;
+   margin-left: auto;
+margin-right: auto;
+left: 0;
+right: 0;
+   transition:0.5s;
+
+}
+
+.navbar label, #hamburger{
+    display: none;
+} 
+
+
+
+    .slider-container {
+       margin-top: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+      }
+      
+      .slider {
+        width: 100%;
+        max-width: 600px;
+        height: 400px;
+        margin: 20px;
+        text-align: center;
+        border-radius: 20px;
+        overflow: hidden;
+        position: relative;
+      }
+      
+      .slides {
+        display: flex;
+        overflow-x: scroll;
+        position: relative;
+        scroll-behavior: smooth;
+        scroll-snap-type: x mandatory;
+      }
+      
+      .slide:nth-of-type(even) {
+        background-color: rgb(250, 246, 212);
+      }
+      
+      .slide {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-shrink: 0;
+        width: 100%;
+        height: 400px;
+        scroll-snap-align: center;
+        margin-right: 0px;
+        box-sizing: border-box;
+        background: white;
+        transform-origin: center center;
+        transform: scale(1);
+      }
+      
+      .slide__text {
+        font-size: 40px;
+        font-weight: bold;
+        font-family: sans-serif;
+      }
+      
+      .slide a {
+        background: none;
+        border: none;
+
+      }
+      
+      a.slide__prev,
+      .slider::before {
+        transform: rotate(135deg);
+        -webkit-transform: rotate(135deg);
+        left: 5%;
+      }
+      
+      a.slide__next,
+      .slider::after {
+        transform: rotate(-45deg);
+        -webkit-transform: rotate(-45deg);
+        right: 5%;
+      }
+      
+      .slider::before,
+      .slider::after,
+      .slide__prev,
+      .slide__next {
+        position: absolute;
+        top: 48%;
+        width: 35px;
+        height: 35px;
+        border: solid white;
+        border-width: 0 4px 4px 0;
+        padding: 3px;
+        box-sizing: border-box;
+      }
+      
+      .slider::before,
+      .slider::after {
+        content: "";
+        z-index: 1;
+        background: none;
+        pointer-events: none;
+      }
+      
+      .slider__nav {
+        box-sizing: border-box;
+        position: absolute;
+        bottom: 5%;
+        left: 50%;
+        width: 300px;
+        margin-left: -150px;
+        text-align: center;
+      }
+      
+      .slider__navlink {
+        display: inline-block;
+        height: 15px;
+        width: 15px;
+        border-radius: 50%;
+        background-color: red;
+        margin: 0 10px 0 10px;
+      }
+      
+      
+      
+      .read-article{
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        z-index: 999;
+        color: #000;
+        background: white;
+        padding: 10px 20px;
+        border-radius: 10px;
+        font-family: arial;
+        text-decoration: none;
+        box-shadow: rgb(50 50 93 / 25%) 0 0 100px -20px, rgb(0 0 0 / 30%) 0 0 60px -15px;
+      }
+      .read-article:hover{
+          background: #d5d5d5;
+          box-shadow: rgb(50 50 93 / 25%) 0 0 100px -20px, rgb(0 0 0 / 30%) 0 0 60px 0px;
+      }
+      iframe[sandbox] .read-article{
+        display: none;
+      }
+
+      h2{
+        margin-top: 50px;
+        text-align: center;
+        color:red;
+        font-size: 50px;
+      }
+
+      #slides__1{
+        background-image: url("../images/champ/champ1.jpg");
+        background-size: cover;
+      }
+
+      #slides__2{
+        background-image: url("../images/champ/champ2.jpeg");
+        background-size: cover;
+      }
+
+      #slides__3{
+        background-image: url("../images/champ/champ3.jpeg");
+        background-size: cover;
+      }
+
+      #slides__4{
+        background-image: url("../images/champ/champ4.png");
+        background-size: cover;
+      }
+
+      #slides__5{
+        background-image: url("../images/champ/champ5.jpg");
+        background-size: cover;
+      }
+
+      #slides__6{
+        background-image: url("../images/champ/champ6.jpg");
+        background-size: cover;
+      }
+@media(max-width:960px){
+    body {
+        overflow-x: hidden;
+        width: 100%;
+        -webkit-box-sizing: border-box;
+           -moz-box-sizing: border-box;
+                box-sizing: border-box;
+    }
+    #we-the-north{
+        /*Overrides previous css*/
+        font-size: 150px !important;
+        letter-spacing: 30px;
+        padding-left:13px;
+        padding-top:12.5% !important;
+    }
+}
+@media(max-width:850px){
+ 
+/*Prevents overflow*/
+    body {
+        overflow-x: hidden;
+        width: 100%;
+        -webkit-box-sizing: border-box;
+           -moz-box-sizing: border-box;
+                box-sizing: border-box;
+    }
+
+    .row{
+        display: block;
+    }
+
+   
+    #nextcolumn{
+        margin-top:50px;
+    }
+
+  
+
+    #grid2dwrap{
+        margin-top:0px;
+      
+    }
+
+    #gridwraptext{
+        text-align: center;
+        color:red;
+        font-size: 35px;
+        }
+
+    
+
+    #we-the-north{
+        /*Overrides previous css*/
+        font-size: 100px !important;
+        letter-spacing: 30px;
+        padding-left:13px;
+        padding-top:12.5% !important;
+    }
+
+    .navbar{
+        position: static;
+    }
+   
+    .navbar ul{
+        box-sizing: border-box;
+        display: block;
+        width: 800px ;
+        border-top: 1px solid #333;
+        z-index: 10;
+
+      }
+   
+     
+      /* (B) SHOW HAMBURGER ICON */
+      .navbar label { 
+        display: inline-block; 
+        color: white;
+        font-style: normal;
+        font-size: 1.2em;
+        padding: 10px;
+        transition: 0.5s;
+        z-index: 10;
+      }
+
+      .navbar label:hover{
+        color:red;
+        transition: 0.5s;
+        cursor:pointer;
+      }
+    
+      /* (C) TOGGLE SHOW/HIDE MENU */
+     
+     
+      .navbar ul{
+        display: none;
+        transition:0.5s;
+
+      }
+
+     
+      #hamburger:checked ~ .navbar ul{
+display: block;
+padding-top:100px;
+line-height: 2.5em;
+transition:0.5s;
+
+}
+
+#hamburger:checked ~ #showcase .content-wrap #we-the-north{
+margin-top: 500px;
+transition:0.5s;
+    }
+
+#hamburger:checked ~ .navbar{
+    height:500px;
+    transition:0.5s;
+
+}
+#hamburger:checked ~ .navbar .container .logo{
+margin-top:-220px;
+left:0px;
+}
+#hamburger:checked ~ .navbar .container label{
+    margin-top:-400px;
+    left:0px;
+    }
+   
+
+    @media(max-width:580px){
+
+        body{
+            width:100%;
+        }
+        #we-the-north{
+            /*Overrides previous css*/
+            font-size: 65px !important;
+            padding-top:25% !important;
+            text-align: center !important;
+            letter-spacing: 20px !important;
+        }
+
+        #grid2dwrap{
+            margin-top:-200px !important;
+          
+        }
+
+        #hamburger:checked ~ #showcase .content-wrap #we-the-north{
+            margin-top: 450px !important;
+            transition:0.5s;
+                }
+    }
+
+}

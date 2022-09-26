@@ -97,6 +97,10 @@ cursor:pointer;
     text-underline-offset: 15px;
 }
 
+footer {
+    display: block;
+  }
+
 #showcase{
     min-height: 500px;
     color:white;
@@ -121,6 +125,28 @@ cursor:pointer;
 
 }
 
+#main-footer{
+    display: block;
+margin-top: 50px;
+    background-color:#696969;
+    color:white;
+    text-align: center;
+    font-size: 17px;
+}
+
+#main-footer a{
+    text-decoration: none;
+    color:white;
+    transition: 0.5s;
+    letter-spacing: 10px;
+}
+
+#main-footer a:hover{
+    transition: 0.5s;
+    color: red;
+}
+
+
 #showcase h1{
     font-family: chinese-rocks, sans-serif;
     font-size: 200px;
@@ -143,13 +169,13 @@ right: 0;
 
 .row {
     display: grid;
-    grid-template-columns: 33.3% 33.3% 33.3%;
+    grid-template-columns: 50% 50%;
 grid-row-gap: 250px;
 margin-top:25px;
   }
   .column {
     padding: 16px;
-    height: 250px;
+    height: 350px;
   }
 
 #grid2dwrap{
@@ -161,6 +187,23 @@ font-weight: 300;
 
 
 #pascal{
+    height:218px;
+    width:300px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+#derozan{
+    height:218px;
+    width:300px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+
+#lowry{
     height:218px;
     width:300px;
     margin-left: auto;
@@ -188,12 +231,34 @@ font-weight: 300;
     text-align: center;
 }
 
+#allptslead{
+    text-align: center;
+
+}
+
+#allassistlead{
+    text-align: center;
+}
+
+
 #ptspascal{
   
    text-align: center;
    padding-top:50px;
 }
+
+#ptsderozan{
+  
+    text-align: center;
+    padding-top:50px;
+ }
 #astfred{
+  
+    text-align: center;
+    padding-top:50px;
+ }
+
+ #astlowry{
   
     text-align: center;
     padding-top:50px;
@@ -226,7 +291,61 @@ margin-top:50px;
     margin-top:50px;
     }
 
+    #subscribe{
+        margin-top: 100px;
+        text-align: center;
+        color:red;
+        font-size: 50px;
+    }
+
+    form {
+        margin-top:75px;
+        display: flex; 
+        justify-content: center;
+        grid-column: 2;
+      }
+      
+      input {
+        flex-grow: 0.25;
+        padding: 0.5em 0.75em;
+        background-color: transparent;
+        border-radius: 10px;
+        color:white;
+        border:solid 2px#ccc; 
+      }
+      
+      button {
+      
+        padding: 0.5em 0.75em;
+        border-radius: 10px;
+        width: 150px;
+        height: 50px;
+        margin-left: 70px;
+background-color: transparent;
+border:solid 1.5px white;
+color:white; 
+font-weight: 700;
+transition: 0.5s;
+    }
+
+    button:hover{
+      cursor:pointer;
+      color:red;
+      border:solid 2px red;
+transition: 0.5s;
+    }
+
+  
+
+
 @media(max-width:960px){
+    body {
+        overflow-x: hidden;
+        width: 100%;
+        -webkit-box-sizing: border-box;
+           -moz-box-sizing: border-box;
+                box-sizing: border-box;
+    }
     #we-the-north{
         /*Overrides previous css*/
         font-size: 150px !important;
@@ -250,6 +369,13 @@ margin-top:50px;
         display: block;
     }
 
+   
+    #nextcolumn{
+        margin-top:50px;
+    }
+
+  
+
     #grid2dwrap{
         margin-top:0px;
       
@@ -261,19 +387,7 @@ margin-top:50px;
         font-size: 35px;
         }
 
-    #assistlead{
-        margin-top:200px;
-    }
-
-    #rapslogo {
-        text-align: center;
-        width:146px;
-        height:145px;
-        margin-left: auto;
-        margin-right: auto;
-        display: block;
-        margin-top:150px;
-        }
+    
 
     #we-the-north{
         /*Overrides previous css*/
@@ -343,8 +457,8 @@ transition:0.5s;
 
 }
 #hamburger:checked ~ .navbar .container .logo{
-margin-top:-400px;
-position: absolute;
+  margin-top:-220px;
+  left:0px;;
 }
 #hamburger:checked ~ .navbar .container label{
     margin-top:-400px;
