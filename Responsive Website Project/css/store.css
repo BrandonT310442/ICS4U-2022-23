@@ -9,9 +9,9 @@
 
 body{
 
-    color:white;
+    color:black;
     font-family: 'Montserrat', sans-serif;
-    background-color: #242526;
+    background-color: white;
     overflow-x: hidden;
 
 }
@@ -148,12 +148,19 @@ margin-top: 50px;
     color: red;
 }
 
+img{
+    margin-top: 20px;
+}
+
+#price{
+    margin-top: 30px;
+}
 
 #showcase h1{
     font-family: chinese-rocks, sans-serif;
     font-size: 200px;
     letter-spacing: 50px;
-    margin-top:350px;
+    margin-top:250px;
    position: absolute;
    top:0;
    margin-left: auto;
@@ -171,13 +178,13 @@ right: 0;
 
 .row {
     display: grid;
-    grid-template-columns: 20% 20% 20% 20% 20%;
+    grid-template-columns: 33.3% 33.3% 33.3%;
 grid-row-gap: 50px;
 margin-top:45px;
   }
   .column {
     padding: 16px;
-    height: 350px;
+    height: 505px;
   }
 
 #grid2dwrap{
@@ -189,7 +196,7 @@ font-weight: 300;
 
 
 .column img{
-    height:218px;
+    height:300px;
     width:300px;
     margin-left: auto;
     margin-right: auto;
@@ -262,15 +269,17 @@ margin-top:50px;
       }
       
       button {
-      
+        margin-top: 30px;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
         padding: 0.5em 0.75em;
         border-radius: 10px;
         width: 150px;
         height: 50px;
-        margin-left: 70px;
 background-color: transparent;
-border:solid 1.5px white;
-color:white; 
+border:solid 1.5px black;
+color:black; 
 font-weight: 700;
 transition: 0.5s;
     }
@@ -278,7 +287,7 @@ transition: 0.5s;
     button:hover{
       cursor:pointer;
       color:red;
-      border:solid 2px red;
+      border:solid 1.5px red;
 transition: 0.5s;
     }
 
@@ -295,10 +304,10 @@ transition: 0.5s;
     }
     #we-the-north{
         /*Overrides previous css*/
-        font-size: 100px !important;
+        font-size: 150px !important;
         letter-spacing: 30px;
         padding-left:13px;
-        margin-top:100px !important;
+        margin-top:160px !important;
     }
 
     .navbar{
@@ -351,9 +360,9 @@ transition:0.5s;
 }
 
 #hamburger:checked ~ #showcase .content-wrap #we-the-north{
-margin-top: 600px !important;
-transition:0.5s;
-    }
+    margin-top: 600px !important;
+    transition:0.5s;
+        }
 
 #hamburger:checked ~ .navbar{
     height:500px;
