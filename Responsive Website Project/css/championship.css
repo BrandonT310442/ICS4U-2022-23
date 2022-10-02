@@ -6,6 +6,7 @@
     padding:0;
 }
 
+/* Make the font Montserrat and make the background colour a dark black */
 
 body{
 
@@ -14,11 +15,13 @@ body{
     background-color: #242526;
 }
 
+/* Ensure the lists have no styles */
 
 ul{
     list-style-type:none;
 }
 
+/* Ensure that the container takes up the whole width*/
 
 .container{
 width:100%;
@@ -28,6 +31,9 @@ width:100%;
     padding-right:50px;
     
 }
+/* Ensure that the navbar is taking the whole width. 
+Adds a transition for the hamburger menu (when extended out) which is used for smaller screen sizes.
+*/
 .navbar{
     
   width: 100%;
@@ -41,6 +47,7 @@ width:100%;
     position: absolute;
 }
 
+/* Made the logo a div so when you hover over it, it changes colour */
 
 .logo{
     /*width:2.5%;*/
@@ -52,6 +59,7 @@ width:100%;
 z-index:5;
 transition:0.5s;
 }
+/* On hover change the logo colour */
 
 .logo:hover{
     width: 30px;
@@ -63,7 +71,9 @@ transition:0.5s;
 cursor:pointer;
 }
 
-
+/* Make sure all the a tags are white and have no text decoration
+Adds a transition for when you hover over them
+*/
 .navbar a{
     color:white;
     text-decoration: none;
@@ -71,43 +81,58 @@ cursor:pointer;
     transition: 0.5s;
 
 }
+/* 
+Makes the navbar and the container flex and uses justify cintent space between aswell as align items center
+*/
 .navbar .container{
     display: flex;
     justify-content: space-between;
     align-items: center;
     height:100%
 }
-
+/* 
+Ensure the margin is 0 all around for 
+the navbar, container and logo
+*/
 .navbar .container .logo{
    margin:0;
 }
+/* Make the UL display flex */
 
 .navbar ul{
     display:flex;
 }
+/* Add margin to the ul and li */
 
 .navbar ul li{
     margin-left:20px;
 }
-
+/* On hover change the text to red and add a underline
+The offset changes how far down the underline is from the text
+*/
 .navbar a:hover{
     color:red;
     transition: 0.5s;
     text-decoration: underline;
     text-underline-offset: 15px;
 }
+/* Make the footer display block */
 
 footer {
     display: block;
   }
-
+    /* Make the min-height 500px
+  Ensure the color of the text is white and centered
+  */
 #showcase{
     min-height: 500px;
     color:white;
     text-align: center;    
 }
 
-
+/* 
+Style the video on the showcase
+*/
 
 #showcase .bg-image{
   
@@ -124,7 +149,8 @@ footer {
    position: relative;
 
 }
-
+/* Add margin and stylize 
+the text in the main footer */
 #main-footer{
     display: block;
 margin-top: 50px;
@@ -133,19 +159,22 @@ margin-top: 50px;
     text-align: center;
     font-size: 17px;
 }
-
+/* Ensure that the a tags in the main footer have no 
+text decoration */
 #main-footer a{
     text-decoration: none;
     color:white;
     transition: 0.5s;
     letter-spacing: 10px;
 }
+/* On hover make the links red and add a transition */
 
 #main-footer a:hover{
     transition: 0.5s;
     color: red;
 }
 
+/* Style the text on the video showcase */
 
 #showcase h1{
     font-family: chinese-rocks, sans-serif;
@@ -161,13 +190,14 @@ right: 0;
    transition:0.5s;
 
 }
+/* Do not display the hamburger menu at this screen size */
 
 .navbar label, #hamburger{
     display: none;
 } 
 
 
-
+/* Uses flexbox to centre the slider */
     .slider-container {
        margin-top: 50px;
         display: flex;
@@ -176,6 +206,7 @@ right: 0;
         height: 100%;
       }
       
+      /* Sets the size of the slider */
       .slider {
         width: 100%;
         max-width: 600px;
@@ -187,6 +218,16 @@ right: 0;
         position: relative;
       }
       
+      /* 
+       If overflow-x is set to scroll, 
+       anything that doesn't fit in our slider viewport 
+       will be accessible only by scrolling.
+
+       Scroll-behavior to smooth and scroll-snap-type 
+       to x mandatory means that if we jump-link 
+       to any child element of slides the browser
+        will navigate to it smoothly
+      */
       .slides {
         display: flex;
         overflow-x: scroll;
@@ -195,9 +236,12 @@ right: 0;
         scroll-snap-type: x mandatory;
       }
       
-      .slide:nth-of-type(even) {
-        background-color: rgb(250, 246, 212);
-      }
+      /* Maeks the slide the same size as the slider
+      Transform-origin, Transform and Scroll-snap-align 
+      ensure that if we jump to a slide the
+       slide will be in the middle of the slider viewport
+      
+      */
       
       .slide {
         display: flex;
@@ -214,17 +258,21 @@ right: 0;
         transform: scale(1);
       }
       
-      .slide__text {
-        font-size: 40px;
-        font-weight: bold;
-        font-family: sans-serif;
-      }
-      
+ 
+      /* Make the buttons invisible */
       .slide a {
         background: none;
         border: none;
 
       }
+
+      /* uses before which is the first
+       child of the selected elemeent
+       
+       Position the elements on top of the 
+       invisible buttons and set oiubte events 
+       to none
+       */
       
       a.slide__prev,
       .slider::before {
@@ -240,6 +288,12 @@ right: 0;
         right: 5%;
       }
       
+
+      /* Attatch it to the slider element causes
+       it to remain in place as they scroll 
+       through the slides. If the user clicks on 
+       the button theya are actually clicking on an
+        invisible button attatched to the slide. */
       .slider::before,
       .slider::after,
       .slide__prev,
@@ -262,6 +316,7 @@ right: 0;
         pointer-events: none;
       }
       
+      /* Style the nav bar */
       .slider__nav {
         box-sizing: border-box;
         position: absolute;
@@ -272,6 +327,7 @@ right: 0;
         text-align: center;
       }
       
+      /* Style the navlinks */
       .slider__navlink {
         display: inline-block;
         height: 15px;
@@ -283,26 +339,6 @@ right: 0;
       
       
       
-      .read-article{
-        position: absolute;
-        top: 10px;
-        left: 10px;
-        z-index: 999;
-        color: #000;
-        background: white;
-        padding: 10px 20px;
-        border-radius: 10px;
-        font-family: arial;
-        text-decoration: none;
-        box-shadow: rgb(50 50 93 / 25%) 0 0 100px -20px, rgb(0 0 0 / 30%) 0 0 60px -15px;
-      }
-      .read-article:hover{
-          background: #d5d5d5;
-          box-shadow: rgb(50 50 93 / 25%) 0 0 100px -20px, rgb(0 0 0 / 30%) 0 0 60px 0px;
-      }
-      iframe[sandbox] .read-article{
-        display: none;
-      }
 
       h2{
         margin-top: 50px;
@@ -311,6 +347,7 @@ right: 0;
         font-size: 50px;
       }
 
+      /* Add the images to each slide */
       #slides__1{
         background-image: url("../images/champ/champ1.jpg");
         background-size: cover;
@@ -340,6 +377,9 @@ right: 0;
         background-image: url("../images/champ/champ6.jpg");
         background-size: cover;
       }
+
+      /* Add a media query for screens less than or equal to 960px
+*/
 @media(max-width:960px){
     body {
         overflow-x: hidden;
@@ -348,6 +388,8 @@ right: 0;
            -moz-box-sizing: border-box;
                 box-sizing: border-box;
     }
+        /* Make the font smaller */
+
     #we-the-north{
         /*Overrides previous css*/
         font-size: 150px !important;
@@ -356,6 +398,8 @@ right: 0;
         padding-top:12.5% !important;
     }
 }
+/* Add a media query for screens less than or equal to 850px */
+
 @media(max-width:850px){
  
 /*Prevents overflow*/
@@ -367,29 +411,8 @@ right: 0;
                 box-sizing: border-box;
     }
 
-    .row{
-        display: block;
-    }
-
-   
-    #nextcolumn{
-        margin-top:50px;
-    }
-
-  
-
-    #grid2dwrap{
-        margin-top:0px;
-      
-    }
-
-    #gridwraptext{
-        text-align: center;
-        color:red;
-        font-size: 35px;
-        }
-
     
+/* Make the showcase text smaller to fit screen size */
 
     #we-the-north{
         /*Overrides previous css*/
@@ -398,11 +421,13 @@ right: 0;
         padding-left:13px;
         padding-top:12.5% !important;
     }
-
+    /* make the navbar static to prevent the 
+    hamburger menu overlapping the showcase video */
     .navbar{
         position: static;
     }
-   
+       /* Make the text stack on top of each other */
+
     .navbar ul{
         box-sizing: border-box;
         display: block;
@@ -423,6 +448,7 @@ right: 0;
         transition: 0.5s;
         z-index: 10;
       }
+      /* On the hover of the hamburger menu change colour */
 
       .navbar label:hover{
         color:red;
@@ -439,7 +465,8 @@ right: 0;
 
       }
 
-     
+          /* If the hamburger menu is clicked make the ul display block */
+
       #hamburger:checked ~ .navbar ul{
 display: block;
 padding-top:100px;
@@ -447,32 +474,42 @@ line-height: 2.5em;
 transition:0.5s;
 
 }
+/* if the hamburger menu is checked move the showcase text down */
 
 #hamburger:checked ~ #showcase .content-wrap #we-the-north{
 margin-top: 500px;
 transition:0.5s;
     }
-
+    /* Change the height of the navbar if it is checked
+    add a transition aswell
+    */
 #hamburger:checked ~ .navbar{
     height:500px;
     transition:0.5s;
 
 }
+/* Make the logo stay at the top left of the navbar */
+
 #hamburger:checked ~ .navbar .container .logo{
 margin-top:-220px;
 left:0px;
 }
+/* Make the label stay at the top right of the navbar */
+
 #hamburger:checked ~ .navbar .container label{
     margin-top:-400px;
     left:0px;
     }
    
+    /* Creates a media query for screens less than or equal to 580px */
 
     @media(max-width:580px){
 
         body{
             width:100%;
         }
+                /* Makes the font for the showcase fit properly */
+
         #we-the-north{
             /*Overrides previous css*/
             font-size: 65px !important;
@@ -480,11 +517,13 @@ left:0px;
             text-align: center !important;
             letter-spacing: 20px !important;
         }
+        /* Make the grid higher */
 
         #grid2dwrap{
             margin-top:-200px !important;
           
         }
+        /* if the hamburger menu is checked move the text down */
 
         #hamburger:checked ~ #showcase .content-wrap #we-the-north{
             margin-top: 450px !important;

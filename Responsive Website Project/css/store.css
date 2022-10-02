@@ -6,6 +6,7 @@
     padding:0;
 }
 
+/* Make the font Montserrat and make the background colour white */
 
 body{
 
@@ -15,12 +16,14 @@ body{
     overflow-x: hidden;
 
 }
+/* Ensure the lists have no styles */
 
 
 ul{
     list-style-type:none;
 }
 
+/* Ensure that the container takes up the whole width*/
 
 .container{
 width:100%;
@@ -30,6 +33,9 @@ width:100%;
     padding-right:50px;
     
 }
+/* Ensure that the navbar is taking the whole width. 
+Adds a transition for the hamburger menu (when extended out) which is used for smaller screen sizes.
+*/
 .navbar{
     
   width: 100%;
@@ -43,6 +49,7 @@ width:100%;
     position: absolute;
 }
 
+/* Made the logo a div so when you hover over it, it changes colour */
 
 .logo{
     /*width:2.5%;*/
@@ -54,6 +61,7 @@ width:100%;
 z-index:5;
 transition:0.5s;
 }
+/* On hover change the logo colour */
 
 .logo:hover{
     width: 30px;
@@ -65,7 +73,9 @@ transition:0.5s;
 cursor:pointer;
 }
 
-
+/* Make sure all the a tags are white and have no text decoration
+Adds a transition for when you hover over them
+*/
 .navbar a{
     color:white;
     text-decoration: none;
@@ -73,36 +83,49 @@ cursor:pointer;
     transition: 0.5s;
 
 }
+/* 
+Makes the navbar and the container flex and uses justify cintent space between aswell as align items center
+*/
 .navbar .container{
     display: flex;
     justify-content: space-between;
     align-items: center;
     height:100%
 }
-
+/* 
+Ensure the margin is 0 all around for 
+the navbar, container and logo
+*/
 .navbar .container .logo{
    margin:0;
 }
-
+/* Make the UL display flex */
 .navbar ul{
     display:flex;
 }
+/* Add margin to the ul and li */
 
 .navbar ul li{
     margin-left:20px;
 }
-
+/* On hover change the text to red and add a underline
+The offset changes how far down the underline is from the text
+*/
 .navbar a:hover{
     color:red;
     transition: 0.5s;
     text-decoration: underline;
     text-underline-offset: 15px;
 }
+/* Make the footer display block */
 
 footer {
     display: block;
   }
 
+    /* Make the min-height 500px
+  Ensure the color of the text is white and centered
+  */
 #showcase{
     min-height: 500px;
     color:white;
@@ -110,7 +133,9 @@ footer {
 }
 
 
-
+/* 
+Style the video on the showcase
+*/
 #showcase .bg-image{
   
     object-fit: cover;
@@ -126,7 +151,8 @@ footer {
    position: relative;
 
 }
-
+/* Add margin and stylize 
+the text in the main footer */
 #main-footer{
     display: block;
 margin-top: 50px;
@@ -135,26 +161,29 @@ margin-top: 50px;
     text-align: center;
     font-size: 17px;
 }
-
+/* Ensure that the a tags in the main footer have no 
+text decoration */
 #main-footer a{
     text-decoration: none;
     color:white;
     transition: 0.5s;
     letter-spacing: 10px;
 }
+/* On hover make the links red and add a transition */
 
 #main-footer a:hover{
     transition: 0.5s;
     color: red;
 }
-
+/* Add margin to the images for each piece of merchandise */
 img{
     margin-top: 20px;
 }
-
+/* Add margin for the price */
 #price{
     margin-top: 30px;
 }
+/* Style the text on the video showcase */
 
 #showcase h1{
     font-family: chinese-rocks, sans-serif;
@@ -170,11 +199,13 @@ right: 0;
    transition:0.5s;
 
 }
+/* Do not display the hamburger menu at this screen size */
 
 .navbar label, #hamburger{
     display: none;
 } 
 
+/* Creates the grid and divides up the screen */
 
 .row {
     display: grid;
@@ -182,10 +213,13 @@ right: 0;
 grid-row-gap: 50px;
 margin-top:45px;
   }
+      /* Creates the column and adds padding */
+
   .column {
     padding: 16px;
     height: 505px;
   }
+    /* Moves the grid down and changes the font weight */
 
 #grid2dwrap{
     margin-top:150px;
@@ -194,6 +228,7 @@ font-weight: 300;
 }
 
 
+/* Styles the merch images to be in the center of each grid tile */
 
 .column img{
     height:300px;
@@ -203,98 +238,50 @@ font-weight: 300;
     display: block;
 }
 
-#nurse{
-    height: 250px;
-    width: 250px;;
-}
 
-#stanley{
-    margin-top: 20px;
-}
+/* Style the text for each column */
 
 .column h2{
     text-align: center;
     font-size: 20px;
 }
 
+ /* Style the text for the grid */
 
 #gridwraptext{
 text-align: center;
 color:red;
 font-size: 50px;
 }
+      /* Style the button to make it look nicer */
 
-#rapslogo {
-text-align: center;
-width:146px;
-height:145px;
-margin-left: auto;
-margin-right: auto;
-display: block;
-margin-top:50px;
-}
-
-
-#retrologo {
-    text-align: center;
-    width:295.38px;
-    height:166.15px;
+button {
+    margin-top: 30px;
     margin-left: auto;
     margin-right: auto;
     display: block;
-    margin-top:50px;
-    }
-
-    #subscribe{
-        margin-top: 100px;
-        text-align: center;
-        color:red;
-        font-size: 50px;
-    }
-
-    form {
-        margin-top:75px;
-        display: flex; 
-        justify-content: center;
-        grid-column: 2;
-      }
-      
-      input {
-        flex-grow: 0.25;
-        padding: 0.5em 0.75em;
-        background-color: transparent;
-        border-radius: 10px;
-        color:white;
-        border:solid 2px#ccc; 
-      }
-      
-      button {
-        margin-top: 30px;
-        margin-left: auto;
-        margin-right: auto;
-        display: block;
-        padding: 0.5em 0.75em;
-        border-radius: 10px;
-        width: 150px;
-        height: 50px;
+    padding: 0.5em 0.75em;
+    border-radius: 10px;
+    width: 150px;
+    height: 50px;
 background-color: transparent;
 border:solid 1.5px black;
 color:black; 
 font-weight: 700;
 transition: 0.5s;
-    }
-
-    button:hover{
-      cursor:pointer;
-      color:red;
-      border:solid 1.5px red;
+}
+/* On hover change the button to red ensure the 
+    cursor is a pointer */
+button:hover{
+  cursor:pointer;
+  color:red;
+  border:solid 1.5px red;
 transition: 0.5s;
-    }
-
-  
-
+}
 
 @media(max-width:960px){
+      /* Prevent overflow along the x axis 
+    (means remove the horizontal scrollbar) */
     body {
         overflow-x: hidden;
         width: 100%;
@@ -302,6 +289,8 @@ transition: 0.5s;
            -moz-box-sizing: border-box;
                 box-sizing: border-box;
     }
+            /* Make the font smaller */
+
     #we-the-north{
         /*Overrides previous css*/
         font-size: 150px !important;
@@ -309,11 +298,13 @@ transition: 0.5s;
         padding-left:13px;
         margin-top:160px !important;
     }
-
+ /* make the navbar static to prevent the 
+    hamburger menu overlapping the showcase video */
     .navbar{
         position: static;
     }
-   
+          /* Make the text stack on top of each other */
+
     .navbar ul{
         box-sizing: border-box;
         display: block;
@@ -334,6 +325,7 @@ transition: 0.5s;
         transition: 0.5s;
         z-index: 10;
       }
+      /* On the hover of the hamburger menu change colour */
 
       .navbar label:hover{
         color:red;
@@ -350,7 +342,8 @@ transition: 0.5s;
 
       }
 
-     
+               /* If the hamburger menu is clicked make the ul display block */
+
       #hamburger:checked ~ .navbar ul{
 display: block;
 padding-top:100px;
@@ -358,69 +351,62 @@ line-height: 2.5em;
 transition:0.5s;
 
 }
+/* if the hamburger menu is checked move the showcase text down */
 
 #hamburger:checked ~ #showcase .content-wrap #we-the-north{
     margin-top: 600px !important;
     transition:0.5s;
         }
-
+  /* Change the height of the navbar if it is checked
+    add a transition aswell
+    */
 #hamburger:checked ~ .navbar{
     height:500px;
     transition:0.5s;
 
 }
+/* Make the logo stay at the top left of the navbar */
+
 #hamburger:checked ~ .navbar .container .logo{
   margin-top:-220px;
   left:0px;;
 }
+/* Make the label stay at the top right of the navbar */
+
 #hamburger:checked ~ .navbar .container label{
     margin-top:-400px;
     left:0px;
     }
-}
-@media(max-width:1388px){
- 
-/*Prevents overflow*/
-    body {
-        overflow-x: hidden;
-        width: 100%;
-        -webkit-box-sizing: border-box;
-           -moz-box-sizing: border-box;
-                box-sizing: border-box;
-    }
+    /* Makes the row display block */
 
     .row{
         display: block;
     }
 
-   
-    #nextcolumn{
-        margin-top:50px;
-    }
-
   
+/* Remove the margin on the grid wrap */
 
     #grid2dwrap{
         margin-top:50px;
       
     }
+    /* Make the grid text center but make the font size smaller */
 
     #gridwraptext{
         text-align: center;
         color:red;
         font-size: 35px;
         }
-
-    
-
-    
-   
+}
+    /* Creates a media query for screens less than or equal to 580px */
 
     @media(max-width:580px){
 
         body{
             width:100%;
         }
+                        /* Makes the font for the showcase fit properly */
+
         #we-the-north{
             /*Overrides previous css*/
             font-size: 65px !important;
@@ -428,11 +414,13 @@ transition:0.5s;
             text-align: center !important;
             letter-spacing: 20px !important;
         }
+        /* Make the grid higher */
 
         #grid2dwrap{
             margin-top:-150px !important;
           
         }
+        /* if the hamburger menu is checked move the text down */
 
         #hamburger:checked ~ #showcase .content-wrap #we-the-north{
             margin-top: 600px !important;
@@ -440,4 +428,3 @@ transition:0.5s;
                 }
     }
 
-}
