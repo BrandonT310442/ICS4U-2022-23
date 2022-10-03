@@ -267,28 +267,11 @@ img{
 
 
 /* Make the stats centered with padding */
-#ptspascal{
+.stats{
   
    text-align: center;
    padding-top:50px;
 }
-
-#ptsderozan{
-  
-    text-align: center;
-    padding-top:50px;
- }
-#astfred{
-  
-    text-align: center;
-    padding-top:50px;
- }
-
- #astlowry{
-  
-    text-align: center;
-    padding-top:50px;
- }
 
 
  /* Style the text for the grid */
