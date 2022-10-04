@@ -338,7 +338,7 @@ transition: 0.5s;
 
 /* Add a media query for screens less than or equal to 960px
 */
-@media(max-width:960px){
+@media(max-width:1060px){
 
     /* Prevent overflow along the x axis 
     (means remove the horizontal scrollbar) */
@@ -361,7 +361,7 @@ transition: 0.5s;
 }
 
 /* Add a media query for screens less than or equal to 850px */
-@media(max-width:850px){
+@media(max-width:875px){
  
 /*Prevents overflow*/
     body {
