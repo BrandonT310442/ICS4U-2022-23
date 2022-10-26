@@ -31,6 +31,6 @@ function wordMultiple(strings){
     }
     return map;
 }
-
+console.log(word0(["a", "b", "a", "b"]));
 console.log(wordCount(["a", "a", "b", "c"]))
 console.log(wordMultiple(["a", "b", "a", "c", "b"]))

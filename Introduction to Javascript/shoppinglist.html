@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input id="input" type="text"><button>Add Item</button>
+    <section></section>
+</body>
+
+<script>
+    let button = document.querySelector('button');
+    let section = document.querySelector("section");
+
+    button.onclick = function event(){
+        let li = document.createElement('li');
+        li.textContent = document.getElementById('input').value
+        let btn = document.createElement('button');
+        btn.setAttribute('id', 'lastbtn');
+        btn.textContent = "Delete";
+        section.appendChild(li);
+        section.appendChild(btn);
+
+            /*
+                        delButton.addEventListener('click', function () {
+                           delButton.parentElement.remove();
+                        });*/
+            btn.addEventListener('click', () => btn.parentElement.remove());
+
+            li.appendChild(btn);
+//         let btnlast =  document.getElementById('lastbtn');
+//         btnlast.onclick = function event2(){
+//         section.removeChild('li');
+//        btnlast.remove();
+// console.log("test");
+     }
+
+  
+    
+
+</script>
+</html>
