@@ -75,14 +75,17 @@
         addnewElement.addEventListener('click',  () =>input.textContent="");
 
        }else if (keypad[j] == "="){
-        addnewElement.addEventListener('click',  () => input.textContent= eval(input.textContent));
-        // addnewElement.addEventListener('click', function(){
-        //     if (eval(input.textContent) !== undefined || eval(input.textContent) !== null){
-        //         input.textContent= eval(input.textContent)
-        //     }else{
-        //         input.textContent = "ERROR";
-        //     }
-        // });
+      //   addnewElement.addEventListener('click',  () => input.textContent= eval(input.textContent));
+        addnewElement.addEventListener('click', function(){
+
+         try {
+            input.textContent= eval(input.textContent)
+
+         } catch (error) {
+            input.textContent = "ERROR";
+         }
+           
+        });
        }else{
        addnewElement.addEventListener('click',  () =>input.textContent+=addnewElement.innerHTML);
        }
