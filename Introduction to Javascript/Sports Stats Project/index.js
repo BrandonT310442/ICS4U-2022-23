@@ -80,10 +80,16 @@ console.log(datefinal)
 // });
 
 let teamData;
+var getTeams2 = false;
 
 function getTeams() {
+  if (getTeams2 == false){
+    window.setTimeout(getTeams, 100); /* this checks the json every 100 milliseconds*/
+    console.log("test")
+  }else{
   teamData = JSON.parse(localStorage['games']);
   console.log(teamData)
+  }
 }
 
 
@@ -121,7 +127,6 @@ function getTeams() {
 var numPages = true; 
 var currpage;
 var finalpage;
-
 async function runCode(){
   while (numPages == true){
   var data = await fetchAsync('https://www.balldontlie.io/api/v1/games?seasons[]=2022&start_date=2022-10-02&end_date=2022/'+datefinal+'&per_page=100'+'&page='+count)
@@ -146,7 +151,10 @@ count++;
 console.log(games[0])
 console.log(games[0].home_team);
 localStorage.setItem('games', JSON.stringify(games));
+getTeams2 = true;
 }
+
+
 
 async function fetchAsync (url) {
   let value;
