@@ -89,7 +89,27 @@ function getTeams() {
   }else{
   teamData = JSON.parse(localStorage['games']);
   console.log(teamData)
+  for (let index = 0; index < teamData.length; index++) {
+    var homeScore = teamData[index].home_team_score;   
+    var awayScore = teamData[index].visitor_team_score;   
+    
+    if (homeScore > awayScore){
+      addRecord(teamData[index].home_team.full_name,teamData[index].visitor_team.full_name);
+    }else if (awayScore > homeScore){
+      addRecord(teamData[index].visitor_team.full_name,teamData[index].home_team.full_name);
+
+    }else if (homeScore !== 0){
+      console.log(teamData[index].visitor_team.full_name+"wins"+"& "+teamData[index].home_team.full_name+"loses");
+    }
+   
+    }
+
+    createtableEast();
+    createtableWest();
+
   }
+
+  
 }
 
 
@@ -129,7 +149,7 @@ var currpage;
 var finalpage;
 async function runCode(){
   while (numPages == true){
-  var data = await fetchAsync('https://www.balldontlie.io/api/v1/games?seasons[]=2022&start_date=2022-10-02&end_date=2022/'+datefinal+'&per_page=100'+'&page='+count)
+  var data = await fetchAsync('https://www.balldontlie.io/api/v1/games?seasons[]=2022&start_date=2022-09-02&end_date=2022/'+datefinal+'&per_page=100'+'&page='+count)
   var arrs = data.data;
   console.log(arrs.length);
   for (let index = 0; index < arrs.length; index++) {
@@ -152,6 +172,7 @@ console.log(games[0])
 console.log(games[0].home_team);
 localStorage.setItem('games', JSON.stringify(games));
 getTeams2 = true;
+
 }
 
 
@@ -169,8 +190,6 @@ async function fetchAsync (url) {
 
 
 runCode();
-console.log(games)
-
 
 
 let teams = [];
@@ -179,18 +198,571 @@ team['name'] = 'Atlanta Hawks';
 team['id'] = 1;
 team['w'] = 0;
 team['L'] = 0;
+team['pct'] = 0;
+team['confrence'] = 'East'
 team['games'] = [];
 teams.push(team);
 
 team = {};
-team['name'] = 'New York';
+team['name'] = 'Boston Celtics';
 team['id'] = 2;
 team['w'] = 0;
 team['L'] = 0;
+team['pct'] = 0;
+
+team['confrence'] = ''
 team['games'] = [];
 teams.push(team);
 
+team = {};
+team['name'] = 'Brooklyn Nets';
+team['id'] = 3;
+team['w'] = 0;
+team['L'] = 0;
+team['pct'] = 0;
+
+team['confrence'] = ''
+team['games'] = [];
+teams.push(team);
+
+team = {};
+team['name'] = 'Charlotte Hornets';
+team['id'] = 4;
+team['w'] = 0;
+team['L'] = 0;
+team['pct'] = 0;
+
+team['confrence'] = ''
+team['games'] = [];
+teams.push(team);
+
+team = {};
+team['name'] = 'Chicago Bulls';
+team['id'] = 5;
+team['w'] = 0;
+team['L'] = 0;
+team['pct'] = 0;
+
+team['confrence'] = ''
+team['games'] = [];
+teams.push(team);
+
+team = {};
+team['name'] = 'Cleveland Cavaliers';
+team['id'] = 6;
+team['w'] = 0;
+team['L'] = 0;
+team['pct'] = 0;
+
+team['confrence'] = ''
+
+team['games'] = [];
+teams.push(team);
+
+team = {};
+team['name'] = 'Dallas Mavericks';
+team['id'] = 7;
+team['w'] = 0;
+team['L'] = 0;
+team['pct'] = 0;
+
+team['confrence'] = ''
+
+team['games'] = [];
+teams.push(team);
+
+team = {};
+team['name'] = 'Denver Nuggets';
+team['id'] = 8;
+team['w'] = 0;
+team['L'] = 0;
+team['pct'] = 0;
+
+team['confrence'] = ''
+
+team['games'] = [];
+teams.push(team);
+
+team = {};
+team['name'] = 'Detroit Pistons';
+team['id'] = 9;
+team['w'] = 0;
+team['L'] = 0;
+team['pct'] = 0;
+
+team['confrence'] = ''
+
+team['games'] = [];
+teams.push(team);
+
+
+team = {};
+team['name'] = 'Golden State Warriors';
+team['id'] = 10;
+team['w'] = 0;
+team['L'] = 0;
+team['pct'] = 0;
+
+team['confrence'] = ''
+
+team['games'] = [];
+teams.push(team);
+
+team = {};
+team['name'] = 'Houston Rockets';
+team['id'] = 11;
+team['w'] = 0;
+team['L'] = 0;
+team['pct'] = 0;
+
+team['confrence'] = ''
+
+team['games'] = [];
+teams.push(team);
+
+team = {};
+team['name'] = 'Indiana Pacers';
+team['id'] = 12;
+team['w'] = 0;
+team['L'] = 0;
+team['pct'] = 0;
+
+team['confrence'] = ''
+
+team['games'] = [];
+teams.push(team);
+
+team = {};
+team['name'] = 'LA Clippers';
+team['id'] = 13;
+team['w'] = 0;
+team['L'] = 0;
+team['pct'] = 0;
+
+team['confrence'] = ''
+
+team['games'] = [];
+teams.push(team);
+
+team = {};
+team['name'] = 'Memphis Grizzlies';
+team['id'] = 14;
+team['w'] = 0;
+team['L'] = 0;
+team['pct'] = 0;
+
+team['confrence'] = ''
+
+team['games'] = [];
+teams.push(team);
+
+team = {};
+team['name'] = 'Miami Heat';
+team['id'] = 15;
+team['w'] = 0;
+team['L'] = 0;
+team['pct'] = 0;
+
+team['confrence'] = ''
+
+team['games'] = [];
+teams.push(team);
+
+team = {};
+team['name'] = 'Milwaukee Bucks';
+team['id'] = 16;
+team['w'] = 0;
+team['L'] = 0;
+team['pct'] = 0;
+
+team['confrence'] = ''
+
+team['games'] = [];
+teams.push(team);
+
+team = {};
+team['name'] = 'Minnesota Timberwolves';
+team['id'] = 17;
+team['w'] = 0;
+team['L'] = 0;
+team['pct'] = 0;
+
+team['confrence'] = ''
+
+team['games'] = [];
+teams.push(team);
+
+team = {};
+team['name'] = 'New Orleans Pelicans';
+team['id'] = 18;
+team['w'] = 0;
+team['L'] = 0;
+team['pct'] = 0;
+
+team['confrence'] = ''
+
+team['games'] = [];
+teams.push(team);
+
+team = {};
+team['name'] = 'New York Knicks';
+team['id'] = 19;
+team['w'] = 0;
+team['L'] = 0;
+team['pct'] = 0;
+
+team['confrence'] = ''
+
+team['games'] = [];
+teams.push(team);
+
+team = {};
+team['name'] = 'Oklahoma City Thunder';
+team['id'] = 20;
+team['w'] = 0;
+team['L'] = 0;
+team['pct'] = 0;
+
+team['confrence'] = ''
+
+team['games'] = [];
+teams.push(team);
+
+team = {};
+team['name'] = 'Orlando Magic';
+team['id'] = 21;
+team['w'] = 0;
+team['L'] = 0;
+team['pct'] = 0;
+
+team['confrence'] = ''
+
+team['games'] = [];
+teams.push(team);
+
+team = {};
+team['name'] = 'Philadelphia 76ers';
+team['id'] = 22;
+team['w'] = 0;
+team['L'] = 0;
+team['pct'] = 0;
+
+team['confrence'] = ''
+
+team['games'] = [];
+teams.push(team);
+
+team = {};
+team['name'] = 'Phoenix Suns';
+team['id'] = 23;
+team['w'] = 0;
+team['L'] = 0;
+team['pct'] = 0;
+
+team['confrence'] = ''
+
+team['games'] = [];
+teams.push(team);
+
+team = {};
+team['name'] = 'Portland Trail Blazers';
+team['id'] = 24;
+team['w'] = 0;
+team['L'] = 0;
+team['pct'] = 0;
+
+team['confrence'] = ''
+
+team['games'] = [];
+teams.push(team);
+
+team = {};
+team['name'] = 'Sacramento Kings';
+team['id'] = 25;
+team['w'] = 0;
+team['L'] = 0;
+team['pct'] = 0;
+
+team['confrence'] = ''
+
+team['games'] = [];
+teams.push(team);
+
+team = {};
+team['name'] = 'San Antonio Spurs';
+team['id'] = 26;
+team['w'] = 0;
+team['L'] = 0;
+team['pct'] = 0;
+
+team['confrence'] = ''
+
+team['games'] = [];
+teams.push(team);
+
+team = {};
+team['name'] = 'Toronto Raptors';
+team['id'] = 27;
+team['w'] = 0;
+team['L'] = 0;
+team['pct'] = 0;
+
+team['confrence'] = ''
+
+team['games'] = [];
+teams.push(team);
+
+team = {};
+team['name'] = 'Utah Jazz';
+team['id'] = 28;
+team['w'] = 0;
+team['L'] = 0;
+team['pct'] = 0;
+
+team['confrence'] = ''
+
+team['games'] = [];
+teams.push(team);
+
+team = {};
+team['name'] = 'Washington Wizards';
+team['id'] = 29;
+team['w'] = 0;
+team['L'] = 0;
+team['pct'] = 0;
+
+team['confrence'] = ''
+
+team['games'] = [];
+teams.push(team);
+
+
 console.log(teams);
+console.log(teams[0].w)
+
+var eastConf = ["Atlanta Hawks", "Boston Celtics", "Brooklyn Nets", "Charlotte Hornets", "Chicago Bulls", "Cleveland Cavaliers", "Detroit Pistons", "Indiana Pacers", "Miami Heat", "Milwaukee Bucks", "New York Knicks", "Orlando Magic", "Philadelphia 76ers", "Toronto Raptors", "Washington Wizards"];
+
+var estConf = []
+
+var wstConf = [];
+function addRecord(teamWin, teamLoss){
+
+for (let i = 0; i < teams.length; i++) {
+  if (teamWin == teams[i].name){
+    teams[i].w = teams[i].w+1;
+  }
+
+  if (teamLoss == teams[i].name){
+    teams[i].L++;
+  }
+}
+
+for (let j = 0; j < teams.length; j++) {
+teams[j].pct = (((teams[j].w)/(teams[j].w+teams[j].L))*100).toFixed(2) ; // sets win % and ensures its to 2 decimal places
+}
+
+estConf.sort((a, b) => b.pct - a.pct); // sorts array based on pct
+wstConf.sort((a, b) => b.pct - a.pct); // sorts array based on pct
+
+console.log(estConf)
+console.log(wstConf)
+
+}
+
+
+function formatTeams(){
+
+  for (let i = 0; i < teams.length; i++) {
+    if (eastConf.includes(teams[i].name)){
+      teams[i].confrence = "Eastern";
+      estConf.push(teams[i]);
+    }else{
+      teams[i].confrence = "Western";
+      wstConf.push(teams[i]);
+    }
+    
+  }
+ 
+
+}
+formatTeams();
+
+var table = document.getElementById("table");
+
+function createtableEast(){
+  table.replaceChildren();
+  for (let i = 0; i < estConf.length; i++) {
+  var tr = document.createElement('tr');
+  var pos = document.createElement('td')  
+  var name = document.createElement('td');  
+  var wins = document.createElement('td');  
+  var losses = document.createElement('td');
+  var percent = document.createElement('td');
+  pos.textContent = i+1;
+  name.textContent = estConf[i].name;
+  wins.textContent = estConf[i].w;
+  losses.textContent = estConf[i].L;
+  percent.textContent = estConf[i].pct;
+  table.append(tr)
+  table.append(pos)
+  table.append(name)
+  table.append(wins)
+  table.append(losses);
+  table.append(percent);
+   // sorts array based on pct
+  
+  }
+}
+
+//   name.addEventListener('click',  () =>estConf.sort((a, b) => b.name - a.name));
+
+var table2 = document.getElementById("table2");
+
+
+function createtableWest(){
+  table2.replaceChildren();
+
+  for (let i = 0; i < wstConf.length; i++) {
+    var tr = document.createElement('tr');
+    var td = document.createElement('td')  
+    var td2 = document.createElement('td');  
+    var td3 = document.createElement('td');  
+    var td4 = document.createElement('td');
+    var td5 = document.createElement('td');
+    td.textContent = i+1;
+    td2.textContent = wstConf[i].name;
+    td3.textContent = wstConf[i].w;
+    td4.textContent = wstConf[i].L;
+    td5.textContent = wstConf[i].pct;
+    table2.append(tr)
+    table2.append(td)
+    table2.append(td2)
+    table2.append(td3)
+    table2.append(td4);
+    table2.append(td5);
+    }
+}
+
+var num = 3;
+
+var teamname1 = document.getElementById("team");
+teamname1.addEventListener('click', function(){
+console.log("clicked");
+if (num%2 == 0){
+  estConf.sort((a, b) => {
+    let fa = a.name.toLowerCase(),
+        fb = b.name.toLowerCase();
+  
+    if (fb < fa) {
+        return -1;
+    }
+    if (fb> fa) {
+        return 1;
+    }
+    return 0;
+  });
+
+}else{
+  estConf.sort((a, b) => {
+    let fa = a.name.toLowerCase(),
+        fb = b.name.toLowerCase();
+  
+    if (fa < fb) {
+        return -1;
+    }
+    if (fa > fb) {
+        return 1;
+    }
+    return 0;
+  });
+}
+num++;
+
+console.log(num)
+createtableEast();
+console.log(estConf);
+});
+
+
+var teamname2 = document.getElementById("team2");
+var num2 = 3
+teamname2.addEventListener('click', function(){
+console.log("clicked");
+if (num2%2 == 0){
+  wstConf.sort((a, b) => {
+    let fa = a.name.toLowerCase(),
+        fb = b.name.toLowerCase();
+  
+    if (fb < fa) {
+        return -1;
+    }
+    if (fb> fa) {
+        return 1;
+    }
+    return 0;
+  });
+
+}else{
+  wstConf.sort((a, b) => {
+    let fa = a.name.toLowerCase(),
+        fb = b.name.toLowerCase();
+  
+    if (fa < fb) {
+        return -1;
+    }
+    if (fa > fb) {
+        return 1;
+    }
+    return 0;
+  });
+}
+num2++;
+
+createtableWest();
+});
+
+var win1 = document.getElementById("win1");
+
+var num3 = 3
+win1.addEventListener('click', function(){
+console.log("clicked");
+if (num3%2 == 0){
+  estConf.sort((a, b) => b.w - a.w); // sorts array based on pct
+}else{
+  estConf.sort((a, b) => a.w - b.w); // sorts array based on pct
+}
+num3++;
+
+createtableEast();
+});
+
+
+var win2 = document.getElementById("win2");
+
+var num4 = 3
+win2.addEventListener('click', function(){
+console.log("clicked");
+if (num4%2 == 0){
+  wstConf.sort((a, b) => b.w - a.w); // sorts array based on pct
+}else{
+  wstConf.sort((a, b) => a.w - b.w); // sorts array based on pct
+}
+num4++;
+
+createtableWest();
+});
+
+
+
+
+
+
+
+console.log(estConf)
+console.log(wstConf)
+
+
+
 
 
 
