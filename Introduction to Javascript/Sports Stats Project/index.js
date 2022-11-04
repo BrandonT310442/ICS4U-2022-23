@@ -170,7 +170,9 @@ count++;
   }
 console.log(games[0])
 console.log(games[0].home_team);
+if (localStorage.getItem("games") == null || localStorage.getItem("games") == undefined){
 localStorage.setItem('games', JSON.stringify(games));
+}
 getTeams2 = true;
 
 }
@@ -199,6 +201,7 @@ team['id'] = 1;
 team['w'] = 0;
 team['L'] = 0;
 team['pct'] = 0;
+team['pos'] = 0;
 team['confrence'] = 'East'
 team['games'] = [];
 teams.push(team);
@@ -209,6 +212,7 @@ team['id'] = 2;
 team['w'] = 0;
 team['L'] = 0;
 team['pct'] = 0;
+team['pos'] = 0;
 
 team['confrence'] = ''
 team['games'] = [];
@@ -220,6 +224,8 @@ team['id'] = 3;
 team['w'] = 0;
 team['L'] = 0;
 team['pct'] = 0;
+team['pos'] = 0;
+
 
 team['confrence'] = ''
 team['games'] = [];
@@ -231,6 +237,7 @@ team['id'] = 4;
 team['w'] = 0;
 team['L'] = 0;
 team['pct'] = 0;
+team['pos'] = 0;
 
 team['confrence'] = ''
 team['games'] = [];
@@ -242,6 +249,7 @@ team['id'] = 5;
 team['w'] = 0;
 team['L'] = 0;
 team['pct'] = 0;
+team['pos'] = 0;
 
 team['confrence'] = ''
 team['games'] = [];
@@ -253,6 +261,7 @@ team['id'] = 6;
 team['w'] = 0;
 team['L'] = 0;
 team['pct'] = 0;
+team['pos'] = 0;
 
 team['confrence'] = ''
 
@@ -265,6 +274,7 @@ team['id'] = 7;
 team['w'] = 0;
 team['L'] = 0;
 team['pct'] = 0;
+team['pos'] = 0;
 
 team['confrence'] = ''
 
@@ -277,6 +287,7 @@ team['id'] = 8;
 team['w'] = 0;
 team['L'] = 0;
 team['pct'] = 0;
+team['pos'] = 0;
 
 team['confrence'] = ''
 
@@ -289,6 +300,7 @@ team['id'] = 9;
 team['w'] = 0;
 team['L'] = 0;
 team['pct'] = 0;
+team['pos'] = 0;
 
 team['confrence'] = ''
 
@@ -302,6 +314,7 @@ team['id'] = 10;
 team['w'] = 0;
 team['L'] = 0;
 team['pct'] = 0;
+team['pos'] = 0;
 
 team['confrence'] = ''
 
@@ -314,6 +327,7 @@ team['id'] = 11;
 team['w'] = 0;
 team['L'] = 0;
 team['pct'] = 0;
+team['pos'] = 0;
 
 team['confrence'] = ''
 
@@ -326,6 +340,7 @@ team['id'] = 12;
 team['w'] = 0;
 team['L'] = 0;
 team['pct'] = 0;
+team['pos'] = 0;
 
 team['confrence'] = ''
 
@@ -338,6 +353,7 @@ team['id'] = 13;
 team['w'] = 0;
 team['L'] = 0;
 team['pct'] = 0;
+team['pos'] = 0;
 
 team['confrence'] = ''
 
@@ -350,6 +366,7 @@ team['id'] = 14;
 team['w'] = 0;
 team['L'] = 0;
 team['pct'] = 0;
+team['pos'] = 0;
 
 team['confrence'] = ''
 
@@ -362,6 +379,7 @@ team['id'] = 15;
 team['w'] = 0;
 team['L'] = 0;
 team['pct'] = 0;
+team['pos'] = 0;
 
 team['confrence'] = ''
 
@@ -374,6 +392,7 @@ team['id'] = 16;
 team['w'] = 0;
 team['L'] = 0;
 team['pct'] = 0;
+team['pos'] = 0;
 
 team['confrence'] = ''
 
@@ -386,6 +405,7 @@ team['id'] = 17;
 team['w'] = 0;
 team['L'] = 0;
 team['pct'] = 0;
+team['pos'] = 0;
 
 team['confrence'] = ''
 
@@ -398,6 +418,7 @@ team['id'] = 18;
 team['w'] = 0;
 team['L'] = 0;
 team['pct'] = 0;
+team['pos'] = 0;
 
 team['confrence'] = ''
 
@@ -410,6 +431,7 @@ team['id'] = 19;
 team['w'] = 0;
 team['L'] = 0;
 team['pct'] = 0;
+team['pos'] = 0;
 
 team['confrence'] = ''
 
@@ -422,6 +444,7 @@ team['id'] = 20;
 team['w'] = 0;
 team['L'] = 0;
 team['pct'] = 0;
+team['pos'] = 0;
 
 team['confrence'] = ''
 
@@ -434,6 +457,7 @@ team['id'] = 21;
 team['w'] = 0;
 team['L'] = 0;
 team['pct'] = 0;
+team['pos'] = 0;
 
 team['confrence'] = ''
 
@@ -446,6 +470,7 @@ team['id'] = 22;
 team['w'] = 0;
 team['L'] = 0;
 team['pct'] = 0;
+team['pos'] = 0;
 
 team['confrence'] = ''
 
@@ -458,6 +483,7 @@ team['id'] = 23;
 team['w'] = 0;
 team['L'] = 0;
 team['pct'] = 0;
+team['pos'] = 0;
 
 team['confrence'] = ''
 
@@ -470,6 +496,7 @@ team['id'] = 24;
 team['w'] = 0;
 team['L'] = 0;
 team['pct'] = 0;
+team['pos'] = 0;
 
 team['confrence'] = ''
 
@@ -482,6 +509,7 @@ team['id'] = 25;
 team['w'] = 0;
 team['L'] = 0;
 team['pct'] = 0;
+team['pos'] = 0;
 
 team['confrence'] = ''
 
@@ -496,6 +524,7 @@ team['L'] = 0;
 team['pct'] = 0;
 
 team['confrence'] = ''
+team['pos'] = 0;
 
 team['games'] = [];
 teams.push(team);
@@ -506,6 +535,7 @@ team['id'] = 27;
 team['w'] = 0;
 team['L'] = 0;
 team['pct'] = 0;
+team['pos'] = 0;
 
 team['confrence'] = ''
 
@@ -518,6 +548,7 @@ team['id'] = 28;
 team['w'] = 0;
 team['L'] = 0;
 team['pct'] = 0;
+team['pos'] = 0;
 
 team['confrence'] = ''
 
@@ -530,6 +561,7 @@ team['id'] = 29;
 team['w'] = 0;
 team['L'] = 0;
 team['pct'] = 0;
+team['pos'] = 0;
 
 team['confrence'] = ''
 
@@ -563,7 +595,15 @@ teams[j].pct = (((teams[j].w)/(teams[j].w+teams[j].L))*100).toFixed(2) ; // sets
 
 estConf.sort((a, b) => b.pct - a.pct); // sorts array based on pct
 wstConf.sort((a, b) => b.pct - a.pct); // sorts array based on pct
+for (let i = 0; i < estConf.length; i++) {
+  estConf[i].pos = i+1;
+  
+}
 
+for (let i = 0; i < wstConf.length; i++) {
+  wstConf[i].pos = i+1;
+  
+}
 console.log(estConf)
 console.log(wstConf)
 
@@ -598,7 +638,7 @@ function createtableEast(){
   var wins = document.createElement('td');  
   var losses = document.createElement('td');
   var percent = document.createElement('td');
-  pos.textContent = i+1;
+  pos.textContent = estConf[i].pos;
   name.textContent = estConf[i].name;
   wins.textContent = estConf[i].w;
   losses.textContent = estConf[i].L;
@@ -629,7 +669,7 @@ function createtableWest(){
     var td3 = document.createElement('td');  
     var td4 = document.createElement('td');
     var td5 = document.createElement('td');
-    td.textContent = i+1;
+    td.textContent = wstConf[i].pos;
     td2.textContent = wstConf[i].name;
     td3.textContent = wstConf[i].w;
     td4.textContent = wstConf[i].L;
@@ -753,6 +793,102 @@ createtableWest();
 });
 
 
+
+
+var pos = document.getElementById("pos");
+
+var num5 = 3
+pos.addEventListener('click', function(){
+console.log("clicked");
+if (num5%2 == 0){
+  estConf.sort((a, b) => b.pos - a.pos);// sorts array based on pct
+}else{
+  estConf.sort((a, b) => a.pos - b.pos); // sorts array based on pct
+}
+num5++;
+
+createtableEast();
+});
+
+
+
+var pos2 = document.getElementById("pos2");
+
+var num6= 3
+pos2.addEventListener('click', function(){
+console.log("clicked");
+if (num6%2 == 0){
+  wstConf.sort((a, b) => b.pos - a.pos);// sorts array based on pct
+}else{
+  wstConf.sort((a, b) => a.pos - b.pos); // sorts array based on pct
+}
+num6++;
+
+createtableWest();
+});
+
+
+var lost = document.getElementById("lost");
+
+var num7= 3
+lost.addEventListener('click', function(){
+console.log("clicked");
+if (num7%2 == 0){
+  estConf.sort((a, b) => b.w - a.w);// sorts array based on pct
+}else{
+  estConf.sort((a, b) => a.w - b.w); // sorts array based on pct
+}
+num7++;
+
+createtableEast();
+});
+
+
+var lost2 = document.getElementById("lost2");
+
+var num8= 3
+lost.addEventListener('click', function(){
+console.log("clicked");
+if (num8%2 == 0){
+  wstConf.sort((a, b) => b.w - a.w);// sorts array based on pct
+}else{
+  wstConf.sort((a, b) => a.w - b.w); // sorts array based on pct
+}
+num8++;
+
+createtableEast();
+});
+
+
+var pct = document.getElementById("pct");
+
+var num9= 3
+pct.addEventListener('click', function(){
+console.log("clicked");
+if (num9%2 == 0){
+  estConf.sort((a, b) => b.pct - a.pct);// sorts array based on pct
+}else{
+  estConf.sort((a, b) => a.pct - b.pct); // sorts array based on pct
+}
+num9++;
+
+createtableEast();
+});
+
+var pct2 = document.getElementById("pct2");
+
+var num10= 3
+pct2.addEventListener('click', function(){
+console.log("clicked");
+if (num10%2 == 0){
+  wstConf.sort((a, b) => b.pct - a.pct);// sorts array based on pct
+}else{
+  wstConf.sort((a, b) => a.pct - b.pct); // sorts array based on pct
+}
+num10++;
+
+createtableWest();
+});
 
 
 

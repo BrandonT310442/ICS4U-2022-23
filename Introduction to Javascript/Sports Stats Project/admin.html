@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADMIN</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+</head>
+<style>
+  #homeScore, #awayScore{
+    width:100px !important;
+  }
+</style>
+<body>
+    <h1 class="is-size-1">Admin Dashboard</h1>
+    <br>
+   <center>
+    <div class="columns">
+      <div class="column">
+    <h1>Select Home Team</h1>
+    <div class="select">
+        <select id="test1"class="child-select">
+          
+        </select>
+      </div>
+      
+      <h1>Add Score</h1>
+      <input id="homeScore" class="input" type="number">
+    </div>
+
+    <div class="column">
+
+        <h1>Select Away Team</h1>
+     
+    <div class="select">
+        <select id="last-select" class="child-select">
+         
+        </select>
+      </div>
+      <h1>Add Score</h1>
+      <input id="awayScore" class="input" type="number">
+      </div>
+    </div>
+  </center>
+  <div class="columns">
+
+ <div class="column">
+      <input id="date"type="date">
+    </div>
+    <div class="column">
+      <button onclick="addGame()"class="button">Add Game</button>
+    </div>
+    </div>
+    </body>
+<script src="admin.js"></script>
+
+</html>

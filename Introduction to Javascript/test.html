@@ -1,80 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Document</title>
-   <style>
-      #clickme {
-         background-color: blue;
-         color: aliceblue;
-      }
-   </style>
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
 
 </head>
-
-<body onload="getTeams();">
-   <div id="clickme" onclick="addGame();">Click Me</div>
+<body>
+   <div class="dropdown">
+      <div class="dropdown-trigger">
+        <button class="button" aria-haspopup="true" aria-controls="dropdown-menu3">
+          <span>Click me</span>
+          <span class="icon is-small">
+            <i class="fas fa-angle-down" aria-hidden="true"></i>
+          </span>
+        </button>
+      </div>
+      <div class="dropdown-menu" id="dropdown-menu3" role="menu">
+        <div class="dropdown-content">
+          <a href="#" class="dropdown-item">
+            Overview
+          </a>
+          <a href="#" class="dropdown-item">
+            Modifiers
+          </a>
+          <a href="#" class="dropdown-item">
+            Grid
+          </a>
+          <a href="#" class="dropdown-item">
+            Form
+          </a>
+          <a href="#" class="dropdown-item">
+            Elements
+          </a>
+          <a href="#" class="dropdown-item">
+            Components
+          </a>
+          <a href="#" class="dropdown-item">
+            Layout
+          </a>
+          <hr class="dropdown-divider">
+          <a href="#" class="dropdown-item">
+            More
+          </a>
+        </div>
+      </div>
+    </div>
 </body>
-<script>
-   let teamData;
-
-   function getTeams() {
-      teamData = JSON.parse(localStorage['teams']);
-   }
-
-   function addGame() {
-      const game = {
-         'opp': 7,
-         'homescore': 8,
-         'awayscore': 6
-      };
-
-      teamData[1].games.push(game);
-      localStorage.setItem('teams', JSON.stringify(teamData));
-   }
-   let teams = [];
-   let team = {};
-   team['name'] = 'Toronto';
-   team['id'] = 1;
-   team['w'] = 0;
-   team['L'] = 0;
-   team['games'] = [];
-   teams.push(team);
-
-   team = {};
-   team['name'] = 'New York';
-   team['id'] = 2;
-   team['w'] = 0;
-   team['L'] = 0;
-   team['games'] = [];
-   teams.push(team);
-
-   team = {};
-   team['name'] = 'Houston';
-   team['id'] = 3;
-   team['w'] = 0;
-   team['L'] = 0;
-   team['games'] = [];
-   teams.push(team);
-
-   team = {};
-   team['name'] = 'Houston';
-   team['id'] = 3;
-   team['w'] = 0;
-   team['L'] = 0;
-   team['games'] = [{
-      'opp': 1
-   }, {
-      'opp': 2
-   }];
-   teams.push(team);
-
-
-
-   localStorage.setItem('teams', JSON.stringify(teams));
-</script>
-
 </html>
