@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ADMIN</title>
+    <title>Admin Dashboard</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
 </head>
 <style>
@@ -26,7 +26,7 @@
       </div>
       
       <h1>Add Score</h1>
-      <input id="homeScore" class="input" type="number">
+      <input  id="homeScore" min="0" class="input" type="number">
     </div>
 
     <div class="column">
@@ -39,19 +39,28 @@
         </select>
       </div>
       <h1>Add Score</h1>
-      <input id="awayScore" class="input" type="number">
+      <input id="awayScore" min="0"class="input" type="number">
       </div>
     </div>
   </center>
+
+  <center>
+    <br>
   <div class="columns">
 
  <div class="column">
-      <input id="date"type="date">
+  
+  <h1>Enter a date:</h1>
+      <input class="button" id="date"type="date">
     </div>
     <div class="column">
+      <h1>Click Below To Add A Game</h1>
       <button onclick="addGame()"class="button">Add Game</button>
+      <br>
+      <div id="btn"></div>
     </div>
     </div>
+  </center>
     </body>
 <script src="admin.js"></script>
 

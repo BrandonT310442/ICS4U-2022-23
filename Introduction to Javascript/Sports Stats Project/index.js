@@ -60,9 +60,13 @@ const sleep = ms => new Promise(res => setTimeout(res, ms));
 // }
 
 var date = new Date().toLocaleDateString();
+console.log(date)
 var count = 1; 
 var datefinal = date.substring(0,date.lastIndexOf('/'));
 console.log(datefinal)
+
+const today = new Date();
+console.log(today)
 
 // fetch('https://www.balldontlie.io/api/v1/games?seasons[]=2022&start_date=2022-10-02&end_date=2022/'+datefinal+'&per_page=100')
 // .then((response) => response.json())
@@ -92,10 +96,18 @@ function getTeams() {
   for (let index = 0; index < teamData.length; index++) {
     var homeScore = teamData[index].home_team_score;   
     var awayScore = teamData[index].visitor_team_score;   
-    
-    if (homeScore > awayScore){
+    let formatDate;
+    if (teamData[index].date.indexOf("T") != -1){
+    formatDate = teamData[index].date.substring(0,teamData[index].date.indexOf("T"));
+    }else{
+      formatDate = teamData[index].date;
+    }
+    console.log(formatDate)
+    console.log(isInThePast(new Date(formatDate)));
+    console.log(teamData[index].date)
+    if (homeScore > awayScore && isInThePast(new Date(formatDate))){
       addRecord(teamData[index].home_team.full_name,teamData[index].visitor_team.full_name);
-    }else if (awayScore > homeScore){
+    }else if (awayScore > homeScore && isInThePast(new Date(formatDate))){
       addRecord(teamData[index].visitor_team.full_name,teamData[index].home_team.full_name);
 
     }else if (homeScore !== 0){
@@ -112,6 +124,13 @@ function getTeams() {
   
 }
 
+
+function isInThePast(date) {
+  const today = new Date();
+
+ 
+  return date < today;
+}
 
 
 

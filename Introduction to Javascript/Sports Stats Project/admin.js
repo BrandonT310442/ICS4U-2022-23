@@ -61,6 +61,16 @@ let away = document.getElementById("last-select").value;
 let homescore = document.getElementById("homeScore").value;
 let awayScore = document.getElementById("awayScore").value;
 
+if (date == "" || home == "" || homescore == "" || awayScore == ""){
+  alert("Please enter the required fields");
+  return;
+  
+}
+if (home == away){
+  alert("Please select 2 different teams");
+  return;
+}
+
 let game = {
   'date': date,
   'home_team':{
@@ -81,6 +91,10 @@ games.push(game);
 
 localStorage.setItem("games",JSON.stringify(games));
 
+let para = document.createElement("p");
+let button = document.getElementById("btn");
+para.textContent = "Game Added Successfully!"
+button.appendChild(para);
 console.log(game);
 
 }
