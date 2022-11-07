@@ -8,10 +8,9 @@ let dateNow = new Date();
     let games = JSON.parse(localStorage.getItem("games"));
     console.log(games)
 
+    let currGames = [];
 function onload(){
-  if (localStorage.getItem("games") == null){
-    getFetch();
-  }
+ 
     let slides = document.getElementById("slides");
     console.log(diffDays);
     let day = 60 * 60 * 24 * 1000;
@@ -22,7 +21,8 @@ function onload(){
       div.setAttribute('class',"slide")
       let span = document.createElement("span");
       span.setAttribute("class","slide__text");
-      span.textContent = incrementDate(startofSeason,i).toDateString();
+      let text = incrementDate(startofSeason,i)
+      span.textContent = text.substring(0,text.lastIndexOf("2")+1);
       let a = document.createElement("a");
       a.setAttribute("class", "slide__prev");
       if (num-1 <= 0){
@@ -43,7 +43,7 @@ function onload(){
      div.appendChild(span)
      div.appendChild(a)
      div.appendChild(a2)
-    
+   
     }
 
     
@@ -61,13 +61,19 @@ for (let j = 0; j < prevBtn.length; j++) {
 }
 console.log(nextBtn)
 
-
+if (localStorage.getItem("games") == null){
+  getFetch();
+}else{
+  changeSlides()
+}
 }
 
+console.log(incrementDate(startofSeason,20))
+console.log(incrementDate(startofSeason,19))
 
 function incrementDate(dateInput,increment) {
     var dateFormatTotime = new Date(dateInput);
-    var increasedDate = new Date(dateFormatTotime.getTime() +(increment *86400000));
+    var increasedDate = new Date(dateFormatTotime.getTime() +(increment *86400000)).toUTCString().toString();
     return increasedDate;
 }
 
@@ -103,6 +109,8 @@ function onClick (){
 
 
   function loadGames(date){
+    currGames = [];
+
     for (let i = 0; i < games.length; i++) {
       let substringDate;
       if (games[i].date.indexOf("T") !== -1){
@@ -114,10 +122,97 @@ function onClick (){
       let date2substring = date2.substring(0, date2.lastIndexOf("T"))
       if (substringDate == date2substring) {
         console.log(games[i])
+        currGames.push(games[i])
       }
       
     }
-    
+    showGames();
+  }
+
+  console.log(currGames);
+ 
+  function showGames(){
+    let container = document.getElementById("column-container")
+    console.log(container)
+    let nums = 0;
+    let numColumns = 0; 
+    container.replaceChildren();
+    for (let i = 0; i < currGames.length; i++) {
+      if (nums % 4 == 0 || nums == 0){
+        numColumns++;
+        let columns = document.createElement("div");
+        columns.setAttribute("class","columns")
+        columns.setAttribute("id","columns-"+numColumns)
+        
+      let column = document.createElement("div")
+     
+      column.setAttribute("class", "column is-one-quarter")
+        let card = document.createElement("div")
+        card.setAttribute("class","card is-rounded");
+        let cardContent = document.createElement("div")
+        cardContent.setAttribute("class","card-content");
+        let content = document.createElement("div");
+        content.setAttribute("class", "content is-flex is-justify-content-space-between");
+        let img = document.createElement("img");
+        img.setAttribute("src","./Logos/"+currGames[i].home_team.full_name+".png");
+        let p = document.createElement("p")
+        p.textContent = "VS";
+        let img2 = document.createElement("img");
+        img2.setAttribute("src","./Logos/"+currGames[i].visitor_team.full_name+".png");
+        let content2 = document.createElement("div");
+        content2.setAttribute("class", "content is-flex is-justify-content-space-between");
+        let score1 = document.createElement("p")
+        score1.textContent = currGames[i].home_team_score;
+        let score2 = document.createElement("p")
+        score2.textContent = currGames[i].visitor_team_score;
+        container.appendChild(columns);
+        columns.appendChild(column);
+        column.appendChild(card);
+        card.appendChild(cardContent)
+        cardContent.appendChild(content)
+        cardContent.appendChild(content2)
+        content.appendChild(img);
+        content.appendChild(p);
+        content.appendChild(img2)
+        content2.appendChild(score1)
+        content2.appendChild(score2);
+        nums++;
+      }else{
+        let columns = document.getElementById("columns-"+numColumns);
+        let column = document.createElement("div")
+      column.setAttribute("class", "column is-one-quarter")
+        let card = document.createElement("div")
+        card.setAttribute("class","card is-rounded");
+        let cardContent = document.createElement("div")
+        cardContent.setAttribute("class","card-content");
+        let content = document.createElement("div");
+        content.setAttribute("class", "content is-flex is-justify-content-space-between");
+        let img = document.createElement("img");
+        img.setAttribute("src","./Logos/"+currGames[i].home_team.full_name+".png");
+        let p = document.createElement("p")
+        p.textContent = "VS";
+        let img2 = document.createElement("img");
+        img2.setAttribute("src","./Logos/"+currGames[i].visitor_team.full_name+".png");
+        let content2 = document.createElement("div");
+        content2.setAttribute("class", "content is-flex is-justify-content-space-between");
+        let score1 = document.createElement("p")
+        score1.textContent = currGames[i].home_team_score;
+        let score2 = document.createElement("p")
+        score2.textContent = currGames[i].visitor_team_score;
+        container.appendChild(columns);
+        columns.appendChild(column);
+        column.appendChild(card);
+        card.appendChild(cardContent)
+        cardContent.appendChild(content)
+        cardContent.appendChild(content2)
+        content.appendChild(img);
+        content.appendChild(p);
+        content.appendChild(img2)
+        content2.appendChild(score1)
+        content2.appendChild(score2);
+        nums++;
+      }
+    }
   }
   var numPages = true; 
 let currpage;

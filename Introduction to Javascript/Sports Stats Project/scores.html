@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+
+    <title>Scores</title>
 </head>
 
 <style>
@@ -12,23 +14,19 @@
 body {
   height: 100%;
   margin: 0px;
+  background-color: #232425;
 }
 
-.slider-container {
-  background: linear-gradient(
-    149deg,
-    rgb(247, 0, 255) 0%,
-    rgb(255, 145, 0) 100%
-  );
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
+
+
+
+.card{
+  height:250px;
 }
 
 .slider {
   width: 100%;
-  max-width: 600px;
+  max-width: 400px;
   height: 400px;
   margin: 20px;
   text-align: center;
@@ -151,21 +149,47 @@ a.slide__next,
 iframe[sandbox] .read-article{
   display: none;
 }
+
+p{
+  font-size: 40px;
+  font-weight: bold;
+}
+img{
+  max-height: 80px;
+}
 </style>
-<body onload="onload(); ">
+<body id="body" onload="onload(); ">
     <div class="slider-container">
         <div class="slider">
           <div id="slides"class="slides">
             
           </div>
-          <div class="slider__nav">
-            <a class="slider__navlink" href="#slides__1"></a>
-            <a class="slider__navlink" href="#slides__2"></a>
-            <a class="slider__navlink" href="#slides__3"></a>
-            <a class="slider__navlink" href="#slides__4"></a>
-          </div>
+         
         </div>
       </div>
+      <div id="column-container">
+      <div id = "columns" class='columns'>
+        <div class='column is-one-quarter'>
+      <div class="card is-rounded">
+        <div class="card-content">
+         
+          <div class="content is-flex is-justify-content-space-between">
+          <img src="./Logos/Atlanta Hawks.png" alt="">
+          <p id="versus">VS</p>
+
+          <img src="./Logos/Boston Celtics.png" alt="">
+        </div>
+        <div class="content is-flex is-justify-content-space-between	">
+          <p>141</p>
+
+          <p>131</p>
+        </div>
+        </div>
+      </div>
+      </div>
+      
+      </div>
+    </div>
 </body>
 
 <script src="scores.js"></script>
