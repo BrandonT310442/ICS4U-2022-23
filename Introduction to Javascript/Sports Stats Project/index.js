@@ -94,8 +94,8 @@ function getTeams() {
   teamData = JSON.parse(localStorage['games']);
   console.log(teamData)
   for (let index = 0; index < teamData.length; index++) {
-    var homeScore = teamData[index].home_team_score;   
-    var awayScore = teamData[index].visitor_team_score;   
+    var homeScore = parseInt(teamData[index].home_team_score);   
+    var awayScore = parseInt(teamData[index].visitor_team_score);   
     let formatDate;
     if (teamData[index].date.indexOf("T") != -1){
     formatDate = teamData[index].date.substring(0,teamData[index].date.indexOf("T"));
@@ -166,6 +166,20 @@ function isInThePast(date) {
 var numPages = true; 
 var currpage;
 var finalpage;
+let dateRan; 
+let then;
+let now = new Date();
+if (localStorage.getItem("date") == null || localStorage.getItem("date") == undefined){
+then = new Date()
+}else{
+  then = new Date(localStorage.getItem("date"));
+}
+console.log(then)
+let msBetweenDates = Math.abs(then.getTime() - now.getTime());
+
+// 👇️ convert ms to hours                  min  sec   ms
+let hoursBetweenDates = msBetweenDates / (60 * 60 * 1000);
+
 async function runCode(){
   while (numPages == true){
   var data = await fetchAsync('https://www.balldontlie.io/api/v1/games?seasons[]=2022&start_date=2022-09-02&end_date=2022/'+datefinal+'&per_page=100'+'&page='+count)
@@ -189,8 +203,14 @@ count++;
   }
 console.log(games[0])
 console.log(games[0].home_team);
-if (localStorage.getItem("games") == null || localStorage.getItem("games") == undefined){
+if (localStorage.getItem("games") == null || localStorage.getItem("games") == undefined || hoursBetweenDates >= 12){
+  if (localStorage.getItem("addedGames") !== null){
+    games = games.concat(JSON.parse(localStorage.getItem("addedGames")))
+  }
 localStorage.setItem('games', JSON.stringify(games));
+localStorage.setItem('date',now); // after 12 hours fetch new data
+
+console.log("updated")
 }
 getTeams2 = true;
 

@@ -8,6 +8,18 @@ let dateNow = new Date();
     let games = JSON.parse(localStorage.getItem("games"));
     console.log(games)
 
+    let then;
+let now = new Date();
+if (localStorage.getItem("date") == null || localStorage.getItem("date") == undefined){
+then = new Date()
+}else{
+  then = new Date(localStorage.getItem("date"));
+}
+console.log(then)
+let msBetweenDates = Math.abs(then.getTime() - now.getTime());
+
+// 👇️ convert ms to hours                  min  sec   ms
+let hoursBetweenDates = msBetweenDates / (60 * 60 * 1000);
     let currGames = [];
 function onload(){
  
@@ -61,7 +73,7 @@ for (let j = 0; j < prevBtn.length; j++) {
 }
 console.log(nextBtn)
 
-if (localStorage.getItem("games") == null){
+if (localStorage.getItem("games") == null || hoursBetweenDates >= 12){
   getFetch();
 }else{
   changeSlides()
@@ -213,6 +225,25 @@ function onClick (){
         nums++;
       }
     }
+
+    let nums2 = nums;
+    let numPages = 0;
+    while (nums2 >0){
+      numPages++;
+      nums2-=10;
+    }
+    console.log(numPages)
+    let pagList = document.querySelector(".pagination-list");
+    pagList.replaceChildren()
+    for (let j = 0; j < numPages; j++) {
+      let li = document.createElement('li');
+      let a = document.createElement('a');
+      a.setAttribute("class", "pagination-link")
+      a.textContent=j+1;
+      pagList.appendChild(li);
+      li.appendChild(a)
+      
+    }
   }
   var numPages = true; 
 let currpage;
@@ -239,7 +270,11 @@ let gamesPush = []
     count++;
     }
     console.log(arrs)
+    if (localStorage.getItem("addedGames") !== null){
+      gamesPush = gamesPush.concat(JSON.parse(localStorage.getItem("addedGames")))
+    }
     localStorage.setItem("games",JSON.stringify(gamesPush));
+    localStorage.setItem('date',now);
     getLocal()
   }
 

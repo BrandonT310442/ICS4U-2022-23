@@ -36,6 +36,8 @@ let teams = [
   ];
 
 
+  let addedGames = [];
+
 let select = document.querySelector("select")
 for (let i = 0; i < teams.length; i++) {
   let option = document.createElement('option');
@@ -88,8 +90,9 @@ let game = {
 let games = JSON.parse(localStorage.getItem("games"));
 
 games.push(game);
-
+addedGames.push(game)
 localStorage.setItem("games",JSON.stringify(games));
+localStorage.setItem("addedGames",JSON.stringify(addedGames));
 
 let para = document.createElement("p");
 let button = document.getElementById("btn");

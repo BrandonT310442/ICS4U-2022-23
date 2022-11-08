@@ -10,6 +10,9 @@
 </head>
 
 <style>
+  .pagination-link, .pagination-previous, .pagination-next{
+    color:white !important;
+  }
     html,
 body {
   height: 100%;
@@ -23,10 +26,15 @@ body {
 .card{
   height:250px;
 }
-
+.slider-container {
+       margin-top: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
 .slider {
   width: 100%;
-  max-width: 400px;
+  max-width: 500px;
   height: 400px;
   margin: 20px;
   text-align: center;
@@ -155,7 +163,24 @@ p{
   font-weight: bold;
 }
 img{
-  max-height: 80px;
+  max-height: 70px;
+}
+
+@media screen and (max-width: 1190px){
+  .columns{
+    display: block !important;
+  }
+
+  .column{
+    display: block;
+    flex-basis: 0;
+    flex-grow: 1;
+    flex-shrink: 1;
+    padding: 0.75rem;
+    width: 100% !important;
+
+  }
+  
 }
 </style>
 <body id="body" onload="onload(); ">
@@ -190,6 +215,13 @@ img{
       
       </div>
     </div>
+    <nav class="pagination" role="navigation" aria-label="pagination">
+      <a class="pagination-previous is-disabled" title="This is the first page">Previous</a>
+      <a class="pagination-next">Next page</a>
+      <ul id="pagination-list"class="pagination-list">
+
+      </ul>
+        </nav>
 </body>
 
 <script src="scores.js"></script>
