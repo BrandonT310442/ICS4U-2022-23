@@ -157,7 +157,10 @@ function onClick (){
         columns.setAttribute("id","columns-"+numColumns)
         
       let column = document.createElement("div")
-     
+      column.setAttribute("class", "column is-one-quarter")
+      if (nums > 9){
+        column.style.display = "none";
+      }
       column.setAttribute("class", "column is-one-quarter")
         let card = document.createElement("div")
         card.setAttribute("class","card is-rounded");
@@ -193,6 +196,9 @@ function onClick (){
         let columns = document.getElementById("columns-"+numColumns);
         let column = document.createElement("div")
       column.setAttribute("class", "column is-one-quarter")
+      if (nums > 9){
+        column.style.display = "none";
+      }
         let card = document.createElement("div")
         card.setAttribute("class","card is-rounded");
         let cardContent = document.createElement("div")
@@ -233,18 +239,48 @@ function onClick (){
       nums2-=10;
     }
     console.log(numPages)
+    console.log(nums)
     let pagList = document.querySelector(".pagination-list");
+    let column = document.querySelectorAll(".column");
+    let currpageNum = 1;
     pagList.replaceChildren()
     for (let j = 0; j < numPages; j++) {
       let li = document.createElement('li');
       let a = document.createElement('a');
       a.setAttribute("class", "pagination-link")
+      if (j==0){
+        a.setAttribute("id", "disabled")
+      }
+      a.addEventListener("click", function(){
+      
+        let pageNum = a.textContent;
+        if (pageNum !== currpageNum){
+          currpageNum = pageNum;
+          let dis = document.querySelector("#disabled");
+          dis.setAttribute("id", "");
+          a.setAttribute("id", "disabled")
+        }
+        console.log(column.length)
+        for (let i = 0; i < column.length; i++) {
+          console.log(column[i].style.display)
+        if (column[i].style.display == ""){
+          column[i].style.display = "none"
+        }else{
+          column[i].style.display ="";
+        }
+          console.log(column[i])
+        }
+      });      
       a.textContent=j+1;
       pagList.appendChild(li);
       li.appendChild(a)
       
     }
+
+
   }
+
+ 
   var numPages = true; 
 let currpage;
 let finalpage;

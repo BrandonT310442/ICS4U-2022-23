@@ -607,6 +607,19 @@ team['confrence'] = ''
 team['games'] = [];
 teams.push(team);
 
+team = {};
+team['name'] = 'Los Angeles Lakers';
+team['id'] = 30;
+team['w'] = 0;
+team['L'] = 0;
+team['pct'] = 0;
+team['pos'] = 0;
+
+team['confrence'] = ''
+
+team['games'] = [];
+teams.push(team);
+
 
 console.log(teams);
 console.log(teams[0].w)
