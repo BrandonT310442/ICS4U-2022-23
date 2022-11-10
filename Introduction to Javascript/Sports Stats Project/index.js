@@ -686,18 +686,21 @@ function createtableEast(){
   for (let i = 0; i < estConf.length; i++) {
   var tr = document.createElement('tr');
   var pos = document.createElement('td')  
-  var name = document.createElement('td');  
+  var name = document.createElement('td'); 
+  let anchor = document.createElement('a');
   var wins = document.createElement('td');  
   var losses = document.createElement('td');
   var percent = document.createElement('td');
   pos.textContent = estConf[i].pos;
-  name.textContent = estConf[i].name;
+  anchor.href= "teamscores.html?teamName="+estConf[i].name;;
+  anchor.textContent = estConf[i].name;
   wins.textContent = estConf[i].w;
   losses.textContent = estConf[i].L;
   percent.textContent = estConf[i].pct;
   table.append(tr)
   table.append(pos)
   table.append(name)
+  name.appendChild(anchor)
   table.append(wins)
   table.append(losses);
   table.append(percent);
@@ -717,18 +720,22 @@ function createtableWest(){
   for (let i = 0; i < wstConf.length; i++) {
     var tr = document.createElement('tr');
     var td = document.createElement('td')  
+    let anchor = document.createElement('a');
+
     var td2 = document.createElement('td');  
     var td3 = document.createElement('td');  
     var td4 = document.createElement('td');
     var td5 = document.createElement('td');
+    anchor.textContent = wstConf[i].name;
+    anchor.href= "teamscores.html?teamName="+wstConf[i].name;
     td.textContent = wstConf[i].pos;
-    td2.textContent = wstConf[i].name;
     td3.textContent = wstConf[i].w;
     td4.textContent = wstConf[i].L;
     td5.textContent = wstConf[i].pct;
     table2.append(tr)
     table2.append(td)
     table2.append(td2)
+    td2.appendChild(anchor)
     table2.append(td3)
     table2.append(td4);
     table2.append(td5);

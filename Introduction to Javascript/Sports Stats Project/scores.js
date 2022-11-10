@@ -168,10 +168,15 @@ function onClick (){
         cardContent.setAttribute("class","card-content");
         let content = document.createElement("div");
         content.setAttribute("class", "content is-flex is-justify-content-space-between");
+        let a = document.createElement("a");
+        a.setAttribute("href", "teamscores.html?teamName="+currGames[i].home_team.full_name);
         let img = document.createElement("img");
         img.setAttribute("src","./Logos/"+currGames[i].home_team.full_name+".png");
+        // 
         let p = document.createElement("p")
         p.textContent = "VS";
+        let a2 = document.createElement("a");
+        a2.setAttribute("href", "teamscores.html?teamName="+currGames[i].visitor_team.full_name);
         let img2 = document.createElement("img");
         img2.setAttribute("src","./Logos/"+currGames[i].visitor_team.full_name+".png");
         let content2 = document.createElement("div");
@@ -186,9 +191,11 @@ function onClick (){
         card.appendChild(cardContent)
         cardContent.appendChild(content)
         cardContent.appendChild(content2)
-        content.appendChild(img);
+        content.appendChild(a)
+        a.appendChild(img);
         content.appendChild(p);
-        content.appendChild(img2)
+        content.appendChild(a2)
+        a2.appendChild(img2)
         content2.appendChild(score1)
         content2.appendChild(score2);
         nums++;
@@ -205,10 +212,14 @@ function onClick (){
         cardContent.setAttribute("class","card-content");
         let content = document.createElement("div");
         content.setAttribute("class", "content is-flex is-justify-content-space-between");
+        let a = document.createElement("a");
+        a.setAttribute("href", "teamscores.html?teamName="+currGames[i].home_team.full_name);
         let img = document.createElement("img");
         img.setAttribute("src","./Logos/"+currGames[i].home_team.full_name+".png");
         let p = document.createElement("p")
         p.textContent = "VS";
+        let a2 = document.createElement("a");
+        a2.setAttribute("href", "teamscores.html?teamName="+currGames[i].visitor_team.full_name);
         let img2 = document.createElement("img");
         img2.setAttribute("src","./Logos/"+currGames[i].visitor_team.full_name+".png");
         let content2 = document.createElement("div");
@@ -223,9 +234,12 @@ function onClick (){
         card.appendChild(cardContent)
         cardContent.appendChild(content)
         cardContent.appendChild(content2)
-        content.appendChild(img);
+        content.appendChild(a)
+        a.appendChild(img);
         content.appendChild(p);
-        content.appendChild(img2)
+        content.appendChild(a2)
+
+        a2.appendChild(img2)
         content2.appendChild(score1)
         content2.appendChild(score2);
         nums++;
