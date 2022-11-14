@@ -629,6 +629,11 @@ var eastConf = ["Atlanta Hawks", "Boston Celtics", "Brooklyn Nets", "Charlotte H
 var estConf = []
 
 var wstConf = [];
+for (let m = 0; m < teams.length; m++) {
+console.log(teams[m].name)
+  
+}
+
 function addRecord(teamWin, teamLoss){
 
 for (let i = 0; i < teams.length; i++) {
