@@ -56,20 +56,27 @@ function showGames(){
     let container = document.getElementById("column-container")
     console.log(container)
     let nums = 0;
+    let nums3 = 0;
+
     let numColumns = 0; 
+    let isdisplayNone = false;
     container.replaceChildren();
     for (let i = 0; i < allGames.length; i++) {
+      if (nums>9){
+        nums = 0;
+        isdisplayNone = true;
+      }
       if (nums % 4 == 0 || nums == 0){
         numColumns++;
         let columns = document.createElement("div");
         columns.setAttribute("class","columns")
         columns.setAttribute("id","columns-"+numColumns)
-        
+      
       let column = document.createElement("div")
       column.setAttribute("class", "column is-one-quarter")
-      if (nums > 9){
+      if (isdisplayNone){
         column.style.display = "none";
-      }
+      } 
       column.setAttribute("class", "column is-one-quarter")
         let card = document.createElement("div")
         card.setAttribute("class","card is-rounded");
@@ -101,11 +108,12 @@ function showGames(){
         content2.appendChild(score1)
         content2.appendChild(score2);
         nums++;
+        nums3++;
       }else{
         let columns = document.getElementById("columns-"+numColumns);
         let column = document.createElement("div")
       column.setAttribute("class", "column is-one-quarter")
-      if (nums > 9){
+      if (isdisplayNone){
         column.style.display = "none";
       }
         let card = document.createElement("div")
@@ -138,19 +146,26 @@ function showGames(){
         content2.appendChild(score1)
         content2.appendChild(score2);
         nums++;
+        nums3++;
+
       }
     }
+    let column = document.querySelectorAll(".column");
 
-    let nums2 = nums;
+    let nums2 = nums3;
     let numPages = 0;
     while (nums2 >0){
       numPages++;
       nums2-=10;
     }
+    let numPages2 = numPages
+    for (let k = 1; k< column.length+1; k++) {
+          column[k-1].setAttribute("id",Math.ceil(k/10));
+
+    }
     console.log(numPages)
     console.log(nums)
     let pagList = document.querySelector(".pagination-list");
-    let column = document.querySelectorAll(".column");
     let currpageNum = 1;
     pagList.replaceChildren()
     for (let j = 0; j < numPages; j++) {
@@ -171,13 +186,11 @@ function showGames(){
         }
         console.log(column.length)
         for (let i = 0; i < column.length; i++) {
-          console.log(column[i].style.display)
-        if (column[i].style.display == ""){
-          column[i].style.display = "none"
-        }else{
-          column[i].style.display ="";
-        }
-          console.log(column[i])
+          if(column[i].id == j+1){
+            column[i].style.display = ""
+           }else{
+            column[i].style.display= "none"
+           }
         }
       });      
       a.textContent=j+1;

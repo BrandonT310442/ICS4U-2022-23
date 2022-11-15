@@ -147,9 +147,15 @@ function onClick (){
     let container = document.getElementById("column-container")
     console.log(container)
     let nums = 0;
+    let nums3 = 0;
     let numColumns = 0; 
+    let isdisplayNone = false;
     container.replaceChildren();
     for (let i = 0; i < currGames.length; i++) {
+      if (nums>9){
+        nums = 0;
+        isdisplayNone = true;
+      }
       if (nums % 4 == 0 || nums == 0){
         numColumns++;
         let columns = document.createElement("div");
@@ -158,7 +164,7 @@ function onClick (){
         
       let column = document.createElement("div")
       column.setAttribute("class", "column is-one-quarter")
-      if (nums > 9){
+      if (isdisplayNone){
         column.style.display = "none";
       }
       column.setAttribute("class", "column is-one-quarter")
@@ -199,11 +205,12 @@ function onClick (){
         content2.appendChild(score1)
         content2.appendChild(score2);
         nums++;
+        nums3++;
       }else{
         let columns = document.getElementById("columns-"+numColumns);
         let column = document.createElement("div")
       column.setAttribute("class", "column is-one-quarter")
-      if (nums > 9){
+      if (isdisplayNone){
         column.style.display = "none";
       }
         let card = document.createElement("div")
@@ -243,20 +250,30 @@ function onClick (){
         content2.appendChild(score1)
         content2.appendChild(score2);
         nums++;
+        nums3++;
       }
     }
+// add an id that tells you what page to have each card on
+let column = document.querySelectorAll(".column");
 
-    let nums2 = nums;
+    let nums2 = nums3;
     let numPages = 0;
     while (nums2 >0){
       numPages++;
       nums2-=10;
     }
+    console.log(column)
+    let numPages2 = numPages
+    for (let k = 1; k< column.length+1; k++) {
+          column[k-1].setAttribute("id",Math.ceil(k/10));
+
+    }
     console.log(numPages)
     console.log(nums)
     let pagList = document.querySelector(".pagination-list");
-    let column = document.querySelectorAll(".column");
     let currpageNum = 1;
+    let numDisplay = 0;
+    let numnotDisplay = 0;
     pagList.replaceChildren()
     for (let j = 0; j < numPages; j++) {
       let li = document.createElement('li');
@@ -276,14 +293,23 @@ function onClick (){
         }
         console.log(column.length)
         for (let i = 0; i < column.length; i++) {
-          console.log(column[i].style.display)
-        if (column[i].style.display == ""){
-          column[i].style.display = "none"
-        }else{
-          column[i].style.display ="";
+         if(column[i].id == j+1){
+          column[i].style.display = ""
+         }else{
+          column[i].style.display= "none"
+         }
+        // if (column[i].style.display == ""){
+        //   column[i].style.display = "none"
+        // }else if (numDisplay <10){ // display only if the number of columns doesn't exceed 10
+        //   numDisplay++;
+        //   column[i].style.display ="";
+
+        // }
+        //   console.log(column[i])
+        //   console.log(numDisplay)
+
         }
-          console.log(column[i])
-        }
+        numDisplay = 0;
       });      
       a.textContent=j+1;
       pagList.appendChild(li);
