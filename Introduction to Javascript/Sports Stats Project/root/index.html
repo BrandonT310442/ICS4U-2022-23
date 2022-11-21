@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NBA || HOME</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <style>
+      #logo{
+        height:60px !important;
+        width: 70px !important;
+      }
+
+      .navbar-item img{
+        max-height: 100% !important;
+        
+      }
+
+      .navbar-item{
+        color:white !important;
+        max-height: 100% !important;
+      }
+
+     html, body{
+        background-color: #242526 !important;
+        color:white !important
+      }
+      nav{
+        background-color: #242526 !important;
+      }
+
+      a.navbar-item{
+        transition:5s !important;
+      }
+      a.navbar-item:hover{
+        background-color: transparent !important;
+        text-decoration: underline;
+    text-underline-offset: 15px;
+    transition: 5s !important;
+      }
+
+      .navbar-burger {
+        color:white !important;
+      }
+
+      @media screen and (max-width: 1023px) {
+        .navbar-menu{
+          background-color: transparent !important;
+        }
+      } 
+
+      .container{
+        column-span: all;
+      }
+      video{
+        margin: auto;
+      }
+
+    </style>
+
+</head>
+<body>
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+          <a id="logo" class="navbar-item" href="index.html">
+            <img src="../imagesvideos/logo.png">
+          </a>
+      
+          <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </a>
+        </div>
+      
+        <div id="navbarBasicExample" class="navbar-menu">
+          <div class="navbar-start">
+            <a class="navbar-item">
+              Home
+            </a>
+      
+            <a class="navbar-item">
+              Admin
+            </a>
+            <a class="navbar-item">
+              Standings
+            </a>
+          
+            <a class="navbar-item">
+              Scores
+            </a>
+          </div>
+      
+         
+        </div>
+      </nav>
+
+      <div id="column-container">
+        <div id = "columns" class='columns'>
+          <div class='column is-full'>
+            <div class="container">
+            <video autoplay muted loop id="myVideo">
+              <source src="../imagesvideos/nbabg.mp4" type="video/mp4">
+            </video>
+          </div>
+        </div>
+        </div>
+        
+        </div>
+      </div>
+      
+</body>
+<script src="../scripts/index.js"></script>
+</html>

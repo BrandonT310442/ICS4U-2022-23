@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team Scores</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+
+</head>
+<style>
+    .card{
+  height:400px;
+}
+p{
+  font-size: 40px;
+  font-weight: bold;
+}
+img{
+  max-height: 70px;
+}
+
+a#disabled.pagination-link {
+  pointer-events: none !important;
+  cursor: default !important;
+}
+
+@media screen and (max-width: 1190px){
+  .columns{
+    display: block !important;
+  }
+
+  .column{
+    display: block;
+    flex-basis: 0;
+    flex-grow: 1;
+    flex-shrink: 1;
+    padding: 0.75rem;
+    width: 100% !important;
+
+  }
+
+ 
+  
+}
+</style>
+<body onload="onload()">
+  <center>
+  <h1 class="is-size-2">Enter a Start date & End Date</h1>
+</center>
+  <div class="is-flex is-justify-content-center">
+
+  
+  <input class="button" id="startDate"type="date">
+  
+  <input class="button" id="endDate"type="date">
+  <button onclick="loadDates()"class="button">Select Dates</button>
+</div>
+<br>
+<br>
+    <div id="column-container">
+        <!-- <div id = "columns" class='columns'>
+          <div class='column is-one-quarter'>
+        <div class="card is-rounded">
+          <div class="card-content">
+           
+            <div class="content is-flex is-justify-content-space-between">
+            <img src="./Logos/Atlanta Hawks.png" alt="">
+            <p id="versus">VS</p>
+  
+            <img src="./Logos/Boston Celtics.png" alt="">
+          </div>
+          <div class="content is-flex is-justify-content-space-between	">
+            <p>141</p>
+  
+            <p>131</p>
+          </div>
+          </div>
+        </div>
+        </div>
+        
+        </div> -->
+      </div>
+      <ul id="pagination-list"class="pagination-list">
+
+    </ul>
+</body>
+<script src="../scripts/teamscores.js"></script>
+</html>
