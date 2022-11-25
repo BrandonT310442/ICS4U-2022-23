@@ -180,3 +180,17 @@ a#disabled.pagination-link {
   color:white !important;
 }
 
+
+a.navbar-item{
+  text-decoration: underline solid transparent;
+  text-underline-offset: 15px;
+
+  transition: text-decoration 0.5s ease;
+}
+a.navbar-item:hover{
+
+  background-color: transparent !important;
+  text-decoration: underline;
+text-underline-offset: 15px;
+}
+
