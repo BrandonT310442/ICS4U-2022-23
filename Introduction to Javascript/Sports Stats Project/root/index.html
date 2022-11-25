@@ -7,56 +7,7 @@
     <title>NBA || HOME</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
     <style>
-      #logo{
-        height:60px !important;
-        width: 70px !important;
-      }
-
-      .navbar-item img{
-        max-height: 100% !important;
-        
-      }
-
-      .navbar-item{
-        color:white !important;
-        max-height: 100% !important;
-      }
-
-     html, body{
-        background-color: #242526 !important;
-        color:white !important
-      }
-      nav{
-        background-color: #242526 !important;
-      }
-
-      a.navbar-item{
-        transition:5s !important;
-      }
-      a.navbar-item:hover{
-        background-color: transparent !important;
-        text-decoration: underline;
-    text-underline-offset: 15px;
-    transition: 5s !important;
-      }
-
-      .navbar-burger {
-        color:white !important;
-      }
-
-      @media screen and (max-width: 1023px) {
-        .navbar-menu{
-          background-color: transparent !important;
-        }
-      } 
-
-      .container{
-        column-span: all;
-      }
-      video{
-        margin: auto;
-      }
-
+     
     </style>
 
 </head>
@@ -76,18 +27,16 @@
       
         <div id="navbarBasicExample" class="navbar-menu">
           <div class="navbar-start">
-            <a class="navbar-item">
-              Home
-            </a>
+
       
-            <a class="navbar-item">
+            <a class="navbar-item" href="admin.html">
               Admin
             </a>
-            <a class="navbar-item">
+            <a class="navbar-item" href="standings.html">
               Standings
             </a>
           
-            <a class="navbar-item">
+            <a class="navbar-item" href="scores.html">
               Scores
             </a>
           </div>
@@ -96,20 +45,13 @@
         </div>
       </nav>
 
-      <div id="column-container">
-        <div id = "columns" class='columns'>
-          <div class='column is-full'>
-            <div class="container">
-            <video autoplay muted loop id="myVideo">
+
+       
+                    <video autoplay muted loop id="myVideo">
               <source src="../imagesvideos/nbabg.mp4" type="video/mp4">
             </video>
-          </div>
-        </div>
-        </div>
-        
-        </div>
-      </div>
       
 </body>
 <script src="../scripts/index.js"></script>
+<link rel="stylesheet" href="../style/index.css">
 </html>

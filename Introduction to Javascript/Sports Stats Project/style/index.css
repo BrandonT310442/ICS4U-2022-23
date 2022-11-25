@@ -1,0 +1,44 @@
+#logo{
+    height:60px !important;
+    width: 70px !important;
+  }
+
+  .navbar-item img{
+    max-height: 100% !important;
+    
+  }
+
+  .navbar-item{
+    max-height: 100% !important;
+  }
+
+
+
+  a.navbar-item{
+    text-decoration: underline solid transparent;
+    text-underline-offset: 15px;
+
+    transition: text-decoration 0.5s ease;
+}
+  a.navbar-item:hover{
+
+    background-color: transparent !important;
+    text-decoration: underline;
+text-underline-offset: 15px;
+}
+
+
+
+  @media screen and (max-width: 1023px) {
+    .navbar-menu{
+      background-color: transparent !important;
+    }
+  } 
+
+  
+
+  #myVideo {
+
+min-width: 100%;
+min-height: 100%;
+}

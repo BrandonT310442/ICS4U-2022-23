@@ -152,14 +152,14 @@ function onClick (){
     let isdisplayNone = false;
     container.replaceChildren();
     for (let i = 0; i < currGames.length; i++) {
-      if (nums>9){
+      if (nums>11){
         nums = 0;
         isdisplayNone = true;
       }
       if (nums % 4 == 0 || nums == 0){
         numColumns++;
         let columns = document.createElement("div");
-        columns.setAttribute("class","columns")
+        columns.setAttribute("class","columns is-centered")
         columns.setAttribute("id","columns-"+numColumns)
         
       let column = document.createElement("div")
@@ -209,7 +209,7 @@ function onClick (){
       }else{
         let columns = document.getElementById("columns-"+numColumns);
         let column = document.createElement("div")
-      column.setAttribute("class", "column is-one-quarter")
+      column.setAttribute("class", "column is-one-quarter is-centered")
       if (isdisplayNone){
         column.style.display = "none";
       }
@@ -260,12 +260,12 @@ let column = document.querySelectorAll(".column");
     let numPages = 0;
     while (nums2 >0){
       numPages++;
-      nums2-=10;
+      nums2-=12;
     }
     console.log(column)
     let numPages2 = numPages
     for (let k = 1; k< column.length+1; k++) {
-          column[k-1].setAttribute("id",Math.ceil(k/10));
+          column[k-1].setAttribute("id",Math.ceil(k/12));
 
     }
     console.log(numPages)
@@ -275,6 +275,42 @@ let column = document.querySelectorAll(".column");
     let numDisplay = 0;
     let numnotDisplay = 0;
     pagList.replaceChildren()
+    
+
+    let liPrev = document.createElement('li');
+    let prevBtn = document.createElement('a');
+    prevBtn.addEventListener("click", function(){
+      if (currpageNum !== 1){
+        currpageNum--;
+        for (let i = 0; i < column.length; i++) {
+          if(column[i].id == currpageNum){
+           column[i].style.display = ""
+          }else{
+           column[i].style.display= "none"
+          }
+         }
+        
+      }
+      let pagBtn = document.querySelectorAll(".pagination-link");
+       // Reset disabled id
+     for (let index = 0; index < pagBtn.length; index++) {
+      if (pagBtn[index].id == "disabled"){
+      pagBtn[index].setAttribute("id","")     
+      }
+      
+      if (pagBtn[index].innerHTML == currpageNum){
+        pagBtn[index].setAttribute("id", "disabled");
+      }
+    }
+    
+    })
+
+    
+    prevBtn.setAttribute("class", "pagination-link")
+    prevBtn.textContent = "<"
+    pagList.appendChild(liPrev);
+      liPrev.appendChild(prevBtn);
+
     for (let j = 0; j < numPages; j++) {
       let li = document.createElement('li');
       let a = document.createElement('a');
@@ -316,7 +352,40 @@ let column = document.querySelectorAll(".column");
       li.appendChild(a)
       
     }
+   
 
+    let liNext = document.createElement('li');
+    let nextBtn = document.createElement('a');
+    nextBtn.addEventListener("click", function(){
+      if (currpageNum !== numPages){
+        currpageNum++;
+        for (let i = 0; i < column.length; i++) {
+          if(column[i].id == currpageNum){
+           column[i].style.display = ""
+          }else{
+           column[i].style.display= "none"
+          }
+         }
+        
+      }
+      let pagBtn = document.querySelectorAll(".pagination-link");
+       // Reset disabled id
+     for (let index = 0; index < pagBtn.length; index++) {
+      if (pagBtn[index].id == "disabled"){
+      pagBtn[index].setAttribute("id","")     
+      }
+      
+      if (pagBtn[index].innerHTML == currpageNum){
+        pagBtn[index].setAttribute("id", "disabled");
+      }
+    }
+    
+    })
+
+    nextBtn.setAttribute("class", "pagination-link")
+   nextBtn.textContent = ">"
+    pagList.appendChild(liNext);
+      liNext.appendChild(nextBtn);
 
   }
 

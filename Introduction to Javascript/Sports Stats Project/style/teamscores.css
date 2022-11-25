@@ -1,0 +1,40 @@
+.card{
+    height:400px;
+  }
+  p{
+    font-size: 40px;
+    font-weight: lighter;
+  }
+  img{
+    max-height: 70px;
+  }
+  .pagination-link, .pagination-previous, .pagination-next{
+    color:black !important;
+    border-radius: 40%;
+  }
+  a#disabled.pagination-link {
+    pointer-events: none !important;
+    cursor: default !important;
+    background-color:	#242526 !important;
+    color:white !important;
+  }
+  
+  
+  @media screen and (max-width: 1190px){
+    .columns{
+      display: block !important;
+    }
+  
+    .column{
+      display: block;
+      flex-basis: 0;
+      flex-grow: 1;
+      flex-shrink: 1;
+      padding: 0.75rem;
+      width: 100% !important;
+  
+    }
+  
+   
+    
+  }
