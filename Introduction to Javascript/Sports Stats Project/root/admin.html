@@ -46,56 +46,80 @@
   </nav>
   
   <video autoplay muted loop id="myVideo">
-    <source src="../imagesvideos/nbabg.mp4" type="video/mp4">
+    <source src="../imagesvideos/admin.mp4" type="video/mp4">
   </video>
-    <h1 class="is-size-1">Admin Dashboard</h1>
     <br>
-   <center>
+    <br>
     <div class="columns">
-      <div class="column">
-    <h1>Select Home Team</h1>
+      <div class="column is-half">
+        <center>
+
+    <div class="card">
+      <div class="card-content">
+        <h1>Select Home Team</h1>
+        
     <div class="select">
         <select id="test1"class="child-select">
           
         </select>
       </div>
-      
+      <br>
+      <br>
       <h1>Add Score</h1>
       <input  id="homeScore" min="0" class="input" type="number">
+      </div>
     </div>
+    </center>
+  </div>
 
-    <div class="column">
+  <div class="column is-half">
+    <center>
 
+    <div class="card">
+      <div class="card-content">
         <h1>Select Away Team</h1>
      
-    <div class="select">
-        <select id="last-select" class="child-select">
-         
-        </select>
-      </div>
-      <h1>Add Score</h1>
-      <input id="awayScore" min="0"class="input" type="number">
-      </div>
+        <div class="select">
+            <select id="last-select" class="child-select">
+             
+            </select>
+          </div>
+          <br>
+          <br>
+          <h1>Add Score</h1>
+          <input id="awayScore" min="0"class="input" type="number">
+    
     </div>
-  </center>
+    
+  </div>
+</center>
 
+</div>
   <center>
     <br>
-  <div class="columns">
+  </div>
 
- <div class="column">
-  
-  <h1>Enter a date:</h1>
-      <input class="button" id="date"type="date">
-    </div>
+  <div class="columns is-centered">
+  <center>
     <div class="column">
-      <h1>Click Below To Add A Game</h1>
-      <button onclick="addGame()"class="button">Add Game</button>
-      <br>
-      <div id="btn"></div>
+      <div class="card">
+      <div class="card-content">
+        <h1>Enter a date:</h1>
+        <input class="button" id="date"type="date">
+        <br>
+        <br>
+        <h1>Click Below To Add A Game</h1>
+        <button onclick="addGame()"class="button">Add Game</button>
+        <br>
+        <div id="btn"></div>
+    
     </div>
+    
+  </div>
+     
     </div>
   </center>
+  </div>
     </body>
 <script src="../scripts/admin.js"></script>
 <link rel="stylesheet" href="../style/admin.css">
