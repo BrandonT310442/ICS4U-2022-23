@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap');
+
 #homeScore, #awayScore{
     width:100px !important;
   }
@@ -6,9 +8,10 @@
   a.navbar-item{
     text-decoration: underline solid transparent;
     text-underline-offset: 15px;
-
+    font-family: 'Montserrat', sans-serif;
+    text-transform: uppercase; 
     transition: text-decoration 0.5s ease;
-}
+  }
   a.navbar-item:hover{
 
     background-color: transparent !important;

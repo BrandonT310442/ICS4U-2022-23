@@ -77,6 +77,11 @@ if (date == "" || home == "" || homescore == "" || awayScore == ""){
   
 }
 
+if (homescore <0 || awayScore <0){
+  alert("Please enter a valid score")
+  return;
+}
+
 if (Date.parse(date) < start || Date.parse(date) > end){
   alert("Please enter a date within the start of the NBA season and today's date")
   return;
