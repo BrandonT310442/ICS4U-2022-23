@@ -25,15 +25,19 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 function onload(){
 
+  // Date tells you when the scores were last updated, it is null simply create a new date
   if (localStorage.getItem("date") == null || localStorage.getItem("date") == undefined){
     then = new Date()
     }else{
       then = new Date(localStorage.getItem("date"));
     }
+
+    // Get msbetween dates
   let msBetweenDates = Math.abs(then.getTime() - now.getTime());
 // 👇️ convert ms to hours                  min  sec   ms
 let hoursBetweenDates = msBetweenDates / (60 * 60 * 1000);
 
+// If there aren't any games stored in the local storage OR if 12 hours have elapsed since the last updatethen fetch new scores
   if (localStorage.getItem("games") == null || hoursBetweenDates >= 12){
     getFetch();
   }else{
@@ -41,10 +45,14 @@ let hoursBetweenDates = msBetweenDates / (60 * 60 * 1000);
   }
 }
 
+// List of all nba teams
 let teams = ["Atlanta Hawks", "Boston Celtics", "Brooklyn Nets", "Charlotte Hornets", "Chicago Bulls", "Cleveland Cavaliers", "Dallas Mavericks", "Denver Nuggets", "Detroit Pistons", "Golden State Warriors", "Houston Rockets", "Indiana Pacers", "LA Clippers", "Memphis Grizzlies", "Miami Heat", "Milwaukee Bucks", "Minnesota Timberwolves", "New Orleans Pelicans", "New York Knicks", "Oklahoma City Thunder", "Orlando Magic", "Philadelphia 76ers", "Phoenix Suns", "Portland Trail Blazers", "Sacramento Kings", "San Antonio Spurs", "Toronto Raptors", "Utah Jazz", "Washington Wizards", "Los Angeles Lakers"]
 
+// Creates an array of addedGames
   let addedGames = [];
 
+
+  // Creates a drop down list with the name of each team
 let select = document.querySelector("select")
 for (let i = 0; i < teams.length; i++) {
   let option = document.createElement('option');
@@ -54,6 +62,7 @@ for (let i = 0; i < teams.length; i++) {
 }
 
 
+// Creates a drop down list for the away team
 let selectlast = document.getElementById("last-select")
 for (let i = 0; i < teams.length; i++) {
   let option = document.createElement('option');
@@ -61,7 +70,7 @@ for (let i = 0; i < teams.length; i++) {
   selectlast.appendChild(option);
   
 }
-
+// Validation is below, ensures the user inputs correct values. 
 let start = Date.parse('2022-10-18');
 let end = Date.now();
 function addGame(){
@@ -95,7 +104,7 @@ if (homescore == awayScore){
   return;
 }
 
-
+// Constructs the game object
 
 let game = {
   'date': date,
@@ -111,12 +120,13 @@ let game = {
   'visitor_team_score':awayScore,
 }
 
-
+// Pushes to the games array and saves it to local storage
 games.push(game);
 addedGames.push(game)
 localStorage.setItem("games",JSON.stringify(games));
 localStorage.setItem("addedGames",JSON.stringify(addedGames));
 
+// Creates a message that states that the game was added sucessfully
 let para = document.createElement("p");
 let button = document.getElementById("btn");
 para.textContent = "Game Added Successfully!"
@@ -126,18 +136,20 @@ console.log(game);
 }
 
 
-
+// Everything below is to fetch data from the api
 
 var numPages = true; 
 let currpage;
 let finalpage;
 let count = 1;
 let gamesPush = []
+// The api is formatted very weirdly so I have to ensure that it gets all the pages within the date range that I want it to get
   async function getFetch(){
     var date = new Date().toLocaleDateString();
     console.log(date)
     var datefinal = date.substring(0,date.lastIndexOf('/'));
     while (numPages == true){
+      // Fetches the data the await makes it so that it waits for it to get the data before the rest of the code executes
     var data = await fetchAsync('https://www.balldontlie.io/api/v1/games?seasons[]=2022&start_date=2022-09-02&end_date=2022/'+datefinal+'&per_page=100'+'&page='+count)
     var arrs = data.data;
     currpage = data.meta.current_page
@@ -145,6 +157,7 @@ let gamesPush = []
     if (currpage == finalpage){
       numPages = false;
     }
+    // For each game pulled push it into the gamesPush array
     for (let index = 0; index < arrs.length; index++) {
       gamesPush.push(arrs[index]);
       }
@@ -153,19 +166,25 @@ let gamesPush = []
     count++;
     }
     console.log(arrs)
+
+    // If there are addedGames then add it into the same array
     if (localStorage.getItem("addedGames") !== null){
       gamesPush = gamesPush.concat(JSON.parse(localStorage.getItem("addedGames")))
     }
+
+    // Sets the item to local storage
     localStorage.setItem("games",JSON.stringify(gamesPush));
     localStorage.setItem('date',now);
     getLocal()
   }
 
   
+  // Gets the games from local storage
   function getLocal(){
     games = JSON.parse(localStorage['games']);
   }
 
+  // Function used to fetch from an api
   async function fetchAsync (url) {
     let value;
     let response = await fetch(url);

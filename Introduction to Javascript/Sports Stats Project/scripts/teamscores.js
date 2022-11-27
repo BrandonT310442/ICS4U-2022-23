@@ -24,6 +24,7 @@ let dateNow = new Date();
 
     let startofSeason = new Date("10/18/2022")
     const diffTime = Math.abs(dateNow - startofSeason);
+    // gets the difference of time from the start of the NBA season to right now
 
     const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); 
     let currSlide = 1;
@@ -32,19 +33,23 @@ let dateNow = new Date();
 
     let then;
 let now = new Date();
+  // Date tells you when the scores were last updated, it is null simply create a new date
+
 if (localStorage.getItem("date") == null || localStorage.getItem("date") == undefined){
 then = new Date()
 }else{
   then = new Date(localStorage.getItem("date"));
 }
 console.log(then)
+    // Get msbetween dates
+
 let msBetweenDates = Math.abs(then.getTime() - now.getTime());
 // 👇️ convert ms to hours                  min  sec   ms
 let hoursBetweenDates = msBetweenDates / (60 * 60 * 1000);
     let currGames = [];
     let allGames = [];
 function onload(){
-
+// Fetch if 12 hours have passed or isnt in local storage
 if (localStorage.getItem("games") == null || hoursBetweenDates >= 12){
   getFetch();
 }else{
@@ -52,19 +57,23 @@ games = JSON.parse(localStorage.getItem("games"));
 getName()
 }
 }
+
+// Gets the paramater from the url
 function getName(){
 let params = (new URL(document.location)).searchParams;
 console.log(params.get('teamName'))
 
-
+// Filters games based on team name
 const game = games.filter(game => game.home_team.full_name == params.get('teamName'));
 const game2 = games.filter(game => game.visitor_team.full_name == params.get('teamName'));
-
+// Adds it all into 1 array
 console.log(game)
 console.log(game2)
 allGames = game.concat(game2)
 console.log(allGames)
 }
+
+// gets the start and end dates and adds validations
 
 function loadDates(){
   onload();
@@ -81,6 +90,7 @@ if (startDate < start || startDate > end || endDate < start || endDate > end || 
 }
   let game = allGames.filter(game=> Date.parse(game.date) >= startDate && Date.parse(game.date) <= endDate);
   allGames = game;
+  // Sorts the array based on date
   allGames.sort((a, b) => Date.parse(a.date) - Date.parse(b.date)); // sorts array based on pct
 
   console.log(game)
@@ -88,6 +98,7 @@ if (startDate < start || startDate > end || endDate < start || endDate > end || 
 
 }
 
+// Shows all the games within the date range
 function showGames(){
     let container = document.getElementById("column-container")
     container.replaceChildren()
@@ -213,12 +224,16 @@ function showGames(){
 
     let nums2 = nums3;
     let numPages = 0;
+        // Counts the number of pages needed to display all the games
+
     while (nums2 >0){
       numPages++;
       nums2-=12;
     }
     console.log(column)
     let numPages2 = numPages
+    // add an id that tells you what page to have each card on
+
     for (let k = 1; k< column.length+1; k++) {
           column[k-1].setAttribute("id",Math.ceil(k/12));
 
@@ -231,9 +246,12 @@ function showGames(){
     let numnotDisplay = 0;
     pagList.replaceChildren()
     
+// Creates a previous page button
 
     let liPrev = document.createElement('li');
     let prevBtn = document.createElement('a');
+        // Adds an event listener for the btn
+
     prevBtn.addEventListener("click", function(){
       if (currpageNum !== 1){
         currpageNum--;
@@ -252,7 +270,8 @@ function showGames(){
       if (pagBtn[index].id == "disabled"){
       pagBtn[index].setAttribute("id","")     
       }
-      
+            // Sets the disabled btn to the curr page number
+
       if (pagBtn[index].innerHTML == currpageNum){
         pagBtn[index].setAttribute("id", "disabled");
       }
@@ -260,11 +279,13 @@ function showGames(){
     
     })
 
-    
+        // Adds classses and appends it
+
     prevBtn.setAttribute("class", "pagination-link")
     prevBtn.textContent = "<"
     pagList.appendChild(liPrev);
       liPrev.appendChild(prevBtn);
+    // Creates all the other buttons for pagination, with the same logic as above
 
     for (let j = 0; j < numPages; j++) {
       let li = document.createElement('li');
@@ -308,12 +329,17 @@ function showGames(){
       
     }
    
+    // Creates a next page button
 
     let liNext = document.createElement('li');
     let nextBtn = document.createElement('a');
+            // Adds an event listener for the btn
+
     nextBtn.addEventListener("click", function(){
       if (currpageNum !== numPages){
         currpageNum++;
+        // If the current column equals the current page number display it and for every other one don't display it
+
         for (let i = 0; i < column.length; i++) {
           if(column[i].id == currpageNum){
            column[i].style.display = ""
@@ -329,13 +355,15 @@ function showGames(){
       if (pagBtn[index].id == "disabled"){
       pagBtn[index].setAttribute("id","")     
       }
-      
+                  // Sets the disabled btn to the curr page number
+
       if (pagBtn[index].innerHTML == currpageNum){
         pagBtn[index].setAttribute("id", "disabled");
       }
     }
     
     })
+    // Adds classses and appends it
 
     nextBtn.setAttribute("class", "pagination-link")
    nextBtn.textContent = ">"
@@ -344,17 +372,22 @@ function showGames(){
 
   }
 
+ // Everything below is to fetch data from the api
 
 var numPages = true; 
 let currpage;
 let finalpage;
 let count = 1;
 let gamesPush = []
+// The api is formatted very weirdly so I have to ensure that it gets all the pages within the date range that I want it to get
+
   async function getFetch(){
     var date = new Date().toLocaleDateString();
     console.log(date)
     var datefinal = date.substring(0,date.lastIndexOf('/'));
     while (numPages == true){
+                  // Fetches the data the await makes it so that it waits for it to get the data before the rest of the code executes
+
     var data = await fetchAsync('https://www.balldontlie.io/api/v1/games?seasons[]=2022&start_date=2022-09-02&end_date=2022/'+datefinal+'&per_page=100'+'&page='+count)
     var arrs = data.data;
     currpage = data.meta.current_page
@@ -362,6 +395,8 @@ let gamesPush = []
     if (currpage == finalpage){
       numPages = false;
     }
+            // For each game pulled push it into the gamesPush array
+
     for (let index = 0; index < arrs.length; index++) {
       gamesPush.push(arrs[index]);
       }
@@ -370,21 +405,27 @@ let gamesPush = []
     count++;
     }
     console.log(arrs)
+            // If there are addedGames then add it into the same array
+
     if (localStorage.getItem("addedGames") !== null){
       gamesPush = gamesPush.concat(JSON.parse(localStorage.getItem("addedGames")))
     }
+            // Sets the item to local storage
+
     localStorage.setItem("games",JSON.stringify(gamesPush));
     localStorage.setItem('date',now);
     getLocal()
   }
 
-  
+    // Gets the games from local storage
+
   function getLocal(){
     games = JSON.parse(localStorage['games']);
     getName()
 
   }
 
+  // Function used to fetch from an api
 
   async function fetchAsync (url) {
     let value;

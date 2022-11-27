@@ -27,23 +27,30 @@ let dateNow = new Date();
     const diffTime = Math.abs(dateNow - startofSeason);
 
     const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); 
+    // gets the difference of time from the start of the NBA season to right now
     let currSlide = 1;
     let games = JSON.parse(localStorage.getItem("games"));
     console.log(games)
 
     let then;
 let now = new Date();
+  // Date tells you when the scores were last updated, it is null simply create a new date
+
 if (localStorage.getItem("date") == null || localStorage.getItem("date") == undefined){
 then = new Date()
 }else{
   then = new Date(localStorage.getItem("date"));
 }
 console.log(then)
+    // Get msbetween dates
+
 let msBetweenDates = Math.abs(then.getTime() - now.getTime());
 
 // 👇️ convert ms to hours                  min  sec   ms
 let hoursBetweenDates = msBetweenDates / (60 * 60 * 1000);
     let currGames = [];
+
+    // Creates the slider to select dates
 function onload(){
  
     let slides = document.getElementById("slides");
@@ -81,37 +88,38 @@ function onload(){
    
     }
 
-    
+    // Adds prev and next page button for navigating through the slider
 let prevBtn = document.getElementsByClassName('slide__prev');
 let nextBtn = document.getElementsByClassName('slide__next');
 
+// Adds an event listener for next btn
 for (let i = 0; i < nextBtn.length; i++) {
   nextBtn[i].addEventListener('click',onClick)
   console.log(nextBtn[i])
 }
-
+// Adds an event listener for prev btn
 for (let j = 0; j < prevBtn.length; j++) {
  prevBtn[j].addEventListener('click',subOnclick)
   
 }
 console.log(nextBtn)
-
+// If the games are null or the last update was more than 12 hours ago then fetch new data
 if (localStorage.getItem("games") == null || hoursBetweenDates >= 12){
   getFetch();
 }else{
   changeSlides()
 }
+// Otherwise call the change slides function
 }
 
-console.log(incrementDate(startofSeason,20))
-console.log(incrementDate(startofSeason,19))
-
+// Function for increasing a date by an increment
 function incrementDate(dateInput,increment) {
     var dateFormatTotime = new Date(dateInput);
     var increasedDate = new Date(dateFormatTotime.getTime() +(increment *86400000)).toUTCString().toString();
     return increasedDate;
 }
 
+// gets the current slide and text for that slide, then calls load games
 function changeSlides(){
   let slidecurr = document.querySelector("#slides__"+currSlide);
   let slideText = slidecurr.querySelector(".slide__text")
@@ -121,6 +129,7 @@ function changeSlides(){
   loadGames(slideText.textContent);
 }
 
+// Changes the slides if btn is clicked
 function onClick (){
 
   if (currSlide == diffDays){
@@ -131,7 +140,8 @@ function onClick (){
   console.log(currSlide);
   changeSlides()
   }
-  
+  // Changes the slides if btn is clicked
+
   function subOnclick (){
     if (currSlide-1 <= 0){
       currSlide = diffDays;
@@ -143,6 +153,7 @@ function onClick (){
   }
 
 
+  // Loads the games for a specific date
   function loadGames(date){
     currGames = [];
 
@@ -166,6 +177,7 @@ function onClick (){
 
   console.log(currGames);
  
+  // Shows all the games for that date
   function showGames(){
     let container = document.getElementById("column-container")
     console.log(container)
@@ -276,17 +288,18 @@ function onClick (){
         nums3++;
       }
     }
-// add an id that tells you what page to have each card on
 let column = document.querySelectorAll(".column");
 
     let nums2 = nums3;
     let numPages = 0;
+    // Counts the number of pages needed to display all the games
     while (nums2 >0){
       numPages++;
       nums2-=12;
     }
     console.log(column)
     let numPages2 = numPages
+    // Adds an id that tells you what page each card should be on
     for (let k = 1; k< column.length+1; k++) {
           column[k-1].setAttribute("id",Math.ceil(k/12));
 
@@ -299,12 +312,14 @@ let column = document.querySelectorAll(".column");
     let numnotDisplay = 0;
     pagList.replaceChildren()
     
-
+// Creates a previous page button
     let liPrev = document.createElement('li');
     let prevBtn = document.createElement('a');
+    // Adds an event listener for the btn
     prevBtn.addEventListener("click", function(){
       if (currpageNum !== 1){
         currpageNum--;
+        // If the current column equals the current page number display it and for every other one don't display it
         for (let i = 0; i < column.length; i++) {
           if(column[i].id == currpageNum){
            column[i].style.display = ""
@@ -320,7 +335,7 @@ let column = document.querySelectorAll(".column");
       if (pagBtn[index].id == "disabled"){
       pagBtn[index].setAttribute("id","")     
       }
-      
+      // Sets the disabled btn to the curr page number
       if (pagBtn[index].innerHTML == currpageNum){
         pagBtn[index].setAttribute("id", "disabled");
       }
@@ -328,12 +343,12 @@ let column = document.querySelectorAll(".column");
     
     })
 
-    
+    // Adds classses and appends it
     prevBtn.setAttribute("class", "pagination-link")
     prevBtn.textContent = "<"
     pagList.appendChild(liPrev);
       liPrev.appendChild(prevBtn);
-
+    // Creates all the other buttons for pagination, with the same logic as above
     for (let j = 0; j < numPages; j++) {
       let li = document.createElement('li');
       let a = document.createElement('a');
@@ -377,11 +392,16 @@ let column = document.querySelectorAll(".column");
     }
    
 
+    // Creates a next page button
     let liNext = document.createElement('li');
     let nextBtn = document.createElement('a');
+        // Adds an event listener for the btn
+
     nextBtn.addEventListener("click", function(){
       if (currpageNum !== numPages){
         currpageNum++;
+// If the current column equals the current page number display it and for every other one don't display it
+
         for (let i = 0; i < column.length; i++) {
           if(column[i].id == currpageNum){
            column[i].style.display = ""
@@ -397,13 +417,15 @@ let column = document.querySelectorAll(".column");
       if (pagBtn[index].id == "disabled"){
       pagBtn[index].setAttribute("id","")     
       }
-      
+            // Sets the disabled btn to the curr page number
+
       if (pagBtn[index].innerHTML == currpageNum){
         pagBtn[index].setAttribute("id", "disabled");
       }
     }
     
     })
+    // Adds classses and appends it
 
     nextBtn.setAttribute("class", "pagination-link")
    nextBtn.textContent = ">"
@@ -412,17 +434,22 @@ let column = document.querySelectorAll(".column");
 
   }
 
- 
+ // Everything below is to fetch data from the api
+
   var numPages = true; 
 let currpage;
 let finalpage;
 let count = 1;
 let gamesPush = []
+// The api is formatted very weirdly so I have to ensure that it gets all the pages within the date range that I want it to get
+
   async function getFetch(){
     var date = new Date().toLocaleDateString();
     console.log(date)
     var datefinal = date.substring(0,date.lastIndexOf('/'));
     while (numPages == true){
+            // Fetches the data the await makes it so that it waits for it to get the data before the rest of the code executes
+
     var data = await fetchAsync('https://www.balldontlie.io/api/v1/games?seasons[]=2022&start_date=2022-09-02&end_date=2022/'+datefinal+'&per_page=100'+'&page='+count)
     var arrs = data.data;
     currpage = data.meta.current_page
@@ -430,6 +457,7 @@ let gamesPush = []
     if (currpage == finalpage){
       numPages = false;
     }
+        // For each game pulled push it into the gamesPush array
     for (let index = 0; index < arrs.length; index++) {
       gamesPush.push(arrs[index]);
       }
@@ -438,13 +466,18 @@ let gamesPush = []
     count++;
     }
     console.log(arrs)
+        // If there are addedGames then add it into the same array
+
     if (localStorage.getItem("addedGames") !== null){
       gamesPush = gamesPush.concat(JSON.parse(localStorage.getItem("addedGames")))
     }
+        // Sets the item to local storage
+
     localStorage.setItem("games",JSON.stringify(gamesPush));
     localStorage.setItem('date',now);
     getLocal()
   }
+  // Gets the games from local storage
 
   function getLocal(){
     games = JSON.parse(localStorage['games']);
@@ -454,6 +487,7 @@ let gamesPush = []
 
   }
  
+  // Function used to fetch from an api
 
   async function fetchAsync (url) {
     let value;
