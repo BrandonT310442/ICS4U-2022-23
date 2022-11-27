@@ -20,6 +20,41 @@
   }
   
   
+#logo{
+  height:60px !important;
+  width: 70px !important;
+}
+
+.navbar-item img{
+  max-height: 100% !important;
+  
+}
+
+.navbar-item{
+  max-height: 100% !important;
+}
+
+
+h1{
+  font-family: 'Montserrat', sans-serif;
+font-weight: bold;
+}
+
+
+
+a.navbar-item{
+  text-decoration: underline solid transparent;
+  text-underline-offset: 15px;
+  font-family: 'Montserrat', sans-serif;
+  text-transform: uppercase; 
+  transition: text-decoration 0.5s ease;
+}
+a.navbar-item:hover{
+
+  background-color: transparent !important;
+  text-decoration: underline;
+text-underline-offset: 15px;
+}
   @media screen and (max-width: 1190px){
     .columns{
       display: block !important;
