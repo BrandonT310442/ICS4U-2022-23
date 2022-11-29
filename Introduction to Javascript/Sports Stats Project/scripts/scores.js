@@ -311,13 +311,15 @@ let column = document.querySelectorAll(".column");
     let numDisplay = 0;
     let numnotDisplay = 0;
     pagList.replaceChildren()
-    
+    if (numPages <=1){
+      return;
+    }
 // Creates a previous page button
     let liPrev = document.createElement('li');
     let prevBtn = document.createElement('a');
     // Adds an event listener for the btn
     prevBtn.addEventListener("click", function(){
-      if (currpageNum !== 1){
+      if (parseInt(currpageNum) !== 1){
         currpageNum--;
         // If the current column equals the current page number display it and for every other one don't display it
         for (let i = 0; i < column.length; i++) {
@@ -398,7 +400,7 @@ let column = document.querySelectorAll(".column");
         // Adds an event listener for the btn
 
     nextBtn.addEventListener("click", function(){
-      if (currpageNum !== numPages){
+      if (parseInt(currpageNum) !== numPages){
         currpageNum++;
 // If the current column equals the current page number display it and for every other one don't display it
 
@@ -499,3 +501,5 @@ let gamesPush = []
     return value;
   
   }
+
+  

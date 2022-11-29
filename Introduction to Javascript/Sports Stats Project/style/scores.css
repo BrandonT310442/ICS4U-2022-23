@@ -46,8 +46,8 @@ text-underline-offset: 15px;
 .slider-container {
   display: flex;
        margin-top: 50px;
-        align-items: left;
-        justify-content: left;
+        align-items: center;
+        justify-content: center;
        
       }
 .slider {

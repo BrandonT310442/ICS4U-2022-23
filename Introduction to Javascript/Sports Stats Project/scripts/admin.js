@@ -81,26 +81,26 @@ let homescore = document.getElementById("homeScore").value;
 let awayScore = document.getElementById("awayScore").value;
 
 if (date == "" || home == "" || homescore == "" || awayScore == ""){
-  alert("Please enter the required fields");
+  showMessage("Please enter the required fields");
   return;
   
 }
 
 if (homescore <0 || awayScore <0){
-  alert("Please enter a valid score")
+  showMessage("Please enter a valid score")
   return;
 }
 
 if (Date.parse(date) < start || Date.parse(date) > end){
-  alert("Please enter a date within the start of the NBA season and today's date")
+  showMessage("Please enter a date within the start of the NBA season and today's date")
   return;
 }
 if (home == away){
-  alert("Please select 2 different teams");
+  showMessage("Please select 2 different teams");
   return;
 }
 if (homescore == awayScore){
-  alert("There can't be any ties")
+  showMessage("There can't be any ties")
   return;
 }
 
@@ -195,3 +195,31 @@ let gamesPush = []
     return value;
   
   }
+
+  async function showMessage(msg){
+    const sleep = ms => new Promise(res => setTimeout(res, ms));
+
+ let error = document.querySelector(".error");
+error.style.display="";
+error.replaceChildren();
+let article = document.createElement("article")
+article.setAttribute("class","message is-danger");
+let messageHeader = document.createElement("div")
+messageHeader.setAttribute("class","message-header")
+let para = document.createElement("p")
+para.textContent = "Error"
+let messageBody = document.createElement("message-body");
+messageBody.setAttribute("class", "message-body")
+messageBody.textContent = msg;
+
+error.appendChild(article)
+article.appendChild(messageHeader);
+messageHeader.appendChild(para)
+article.appendChild(messageBody);
+
+await sleep(3000);
+error.style.display="none";
+
+
+  }
+

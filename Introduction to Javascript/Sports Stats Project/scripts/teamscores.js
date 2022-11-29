@@ -81,8 +81,8 @@ function loadDates(){
   let endDate = Date.parse(document.getElementById("endDate").value);
   let start = Date.parse('2022-10-18');
 let end = Date.now();
-if (startDate < start || startDate > end || endDate < start || endDate > end || startDate == NaN || endDate == NaN){
-  alert("Please enter a date within the start of the NBA season and today's date")
+if (startDate < start || startDate > end || endDate < start || endDate > end || isNaN(startDate) || isNaN(endDate)|| startDate > endDate){
+  showMessage("Please enter a date within the start of the NBA season and today's date")
   return;
 }else if (startDate == "" || endDate == ""){
   alert("Please enter a date");
@@ -117,7 +117,7 @@ function showGames(){
       if (nums % 4 == 0 || nums == 0){
         numColumns++;
         let columns = document.createElement("div");
-        columns.setAttribute("class","columns")
+        columns.setAttribute("class","columns is-centered")
         columns.setAttribute("id","columns-"+numColumns)
       
       let column = document.createElement("div")
@@ -169,6 +169,7 @@ function showGames(){
         nums3++;
       }else{
         let columns = document.getElementById("columns-"+numColumns);
+        columns.setAttribute("class", "columns is-centered")
         let column = document.createElement("div")
       column.setAttribute("class", "column is-one-quarter")
       if (isdisplayNone){
@@ -245,7 +246,9 @@ function showGames(){
     let numDisplay = 0;
     let numnotDisplay = 0;
     pagList.replaceChildren()
-    
+      if (numPages <=1){
+      return;
+    }
 // Creates a previous page button
 
     let liPrev = document.createElement('li');
@@ -253,7 +256,7 @@ function showGames(){
         // Adds an event listener for the btn
 
     prevBtn.addEventListener("click", function(){
-      if (currpageNum !== 1){
+      if (parseInt(currpageNum) !== 1){
         currpageNum--;
         for (let i = 0; i < column.length; i++) {
           if(column[i].id == currpageNum){
@@ -336,7 +339,7 @@ function showGames(){
             // Adds an event listener for the btn
 
     nextBtn.addEventListener("click", function(){
-      if (currpageNum !== numPages){
+      if (parseInt(currpageNum) !== numPages){
         currpageNum++;
         // If the current column equals the current page number display it and for every other one don't display it
 
@@ -437,3 +440,33 @@ let gamesPush = []
     return value;
   
   }
+
+
+  async function showMessage(msg){
+    const sleep = ms => new Promise(res => setTimeout(res, ms));
+console.log("test")
+ let error = document.querySelector(".error");
+ console.log(error)
+error.style.display="";
+error.replaceChildren();
+let article = document.createElement("article")
+article.setAttribute("class","message is-danger");
+let messageHeader = document.createElement("div")
+messageHeader.setAttribute("class","message-header")
+let para = document.createElement("p")
+para.textContent = "Error"
+let messageBody = document.createElement("message-body");
+messageBody.setAttribute("class", "message-body")
+messageBody.textContent = msg;
+
+error.appendChild(article)
+article.appendChild(messageHeader);
+messageHeader.appendChild(para)
+article.appendChild(messageBody);
+
+await sleep(3000);
+error.style.display="none";
+
+
+  }
+

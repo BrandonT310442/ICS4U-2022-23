@@ -33,6 +33,7 @@ text-underline-offset: 15px;
   }
 
   .card{
-    width:500px;
-    height: 250px;;
+    width:850px;
+    height: 85%;;
+    margin:auto;
   }
