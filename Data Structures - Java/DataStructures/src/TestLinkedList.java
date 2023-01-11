@@ -22,7 +22,17 @@ list.remove(1);
 list.remove(5);
 System.out.println(list);
 
-
+list = new IntLinkedList();
+list.add(1);
+list.add(2);
+list.add(3);
+System.out.println(list);
+list.addFront(4);
+list.addFront(5);
+temp = list.removeFront();
+System.out.println(list);
+System.out.println(temp);
+System.out.println(list.size());
     }
 
     private static void testAddNodes() {

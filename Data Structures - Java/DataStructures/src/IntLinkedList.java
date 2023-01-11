@@ -29,6 +29,17 @@ public class IntLinkedList {
         return true;
     }
 
+    public Integer removeFront(){
+        if (head == null){
+            return null;
+        }else{
+            Integer temp = head.getData();
+            head = head.getLink();
+            manyItems--;
+            return temp;
+        }
+    }
+
     public boolean add(int index, Integer data ){
         IntNode curr = head;
         IntNode temp = new IntNode(data);
@@ -83,6 +94,7 @@ public class IntLinkedList {
         }
      }
   
+    
 
 
     public String toString(){
@@ -100,4 +112,6 @@ public class IntLinkedList {
 
         return result;
     }
+
+     
 }
