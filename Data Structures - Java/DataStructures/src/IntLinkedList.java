@@ -40,28 +40,24 @@ public class IntLinkedList {
         }
     }
 
-    public boolean add(int index, Integer data ){
-        IntNode curr = head;
-        IntNode temp = new IntNode(data);
-
-        if (index > manyItems){
-            throw new IndexOutOfBoundsException("Index" + index + " is not allowed max index is " + manyItems);
+    public boolean add(int index, Integer data) {
+        if (index > manyItems)
+           throw new IndexOutOfBoundsException("Index " + index + " is not allowed, maz index is " + manyItems);
+  
+        if (index == 0)
+           addFront(data);
+        else {
+           IntNode curr = head;
+           for (int i = 0; i < index - 1; i++) {
+              curr = curr.getLink();
+           }
+  
+           curr.setLink(new IntNode(data, curr.getLink()));
+           manyItems++;
         }
-        if (index == 0){
-            addFront(data);
-            manyItems++;
-        }else{
-            for (int i = 0; i < index-1; i++) {
-            curr = curr.getLink();
-        }
-        curr.setLink(new IntNode(data, curr.getLink()));
-        manyItems++;
-    
-    }
+  
         return true;
-    
-}
-
+     }
     public int size(){
         return manyItems;
     }
@@ -113,5 +109,22 @@ public class IntLinkedList {
         return result;
     }
 
-     
+    
+   public Integer get(int index) {
+    if (index < 0)
+       throw new IndexOutOfBoundsException("Invalid index " + index + " must be greater than 0");
+
+    if (head == null)
+       throw new IllegalStateException("Can't get an element from an empty list.");
+    else if (index > size()) {
+       throw new IndexOutOfBoundsException("Invalid index " + index + " max index is " + (size() - 1));
+    } else {
+       IntNode curr = head;
+       for (int i = 0; i < index; i++) {
+          curr = curr.getLink();
+       }
+
+       return curr.getData();
+    }
+ }
 }
