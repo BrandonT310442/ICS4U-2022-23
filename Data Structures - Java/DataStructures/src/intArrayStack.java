@@ -1,6 +1,6 @@
 import java.util.Arrays;
 
-public class intArrayStack {
+public class IntArrayStack {
     private int manyItems = 0;
     private int[] list = new int[1];
     public void push(Integer data){
@@ -31,11 +31,11 @@ public class intArrayStack {
       return list;
     }
 
-    public int getSize(){
+    public int size(){
         return manyItems;
     }
 
-    public int peak(){
+    public int peek(){
         return list[list.length-1];
     }
 
@@ -50,6 +50,8 @@ public class intArrayStack {
 
         return -1;
     }
+
+   
 
     public boolean empty(){
         return manyItems ==0;

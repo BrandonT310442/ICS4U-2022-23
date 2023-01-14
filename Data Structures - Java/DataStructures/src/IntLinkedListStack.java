@@ -60,7 +60,31 @@ public class IntLinkedListStack {
         }
         return count;
     }
-    private boolean empty() {
-        return head.getLink() == null;
+    public boolean empty() {
+        if (head == null){
+            return true;
+        }
+        return false;
     }
+
+    public int size(){
+        return manyItems;
+    }
+    public Integer get(int index) {
+        if (index < 0)
+           throw new IndexOutOfBoundsException("Invalid index " + index + " must be greater than 0");
+    
+        if (head == null)
+           throw new IllegalStateException("Can't get an element from an empty list.");
+        else if (index > size()) {
+           throw new IndexOutOfBoundsException("Invalid index " + index + " max index is " + (size() - 1));
+        } else {
+           IntNode curr = head;
+           for (int i = 0; i < index; i++) {
+              curr = curr.getLink();
+           }
+    
+           return curr.getData();
+        }
+     }
 }

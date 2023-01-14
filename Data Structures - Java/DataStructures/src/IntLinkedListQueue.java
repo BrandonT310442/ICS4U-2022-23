@@ -25,4 +25,12 @@ public class IntLinkedListQueue {
     public Integer peek(){
         return data.get(0);
     }
+
+    public Integer get(int index) {
+       return data.get(index);
+     }
+
+     public Integer size(){
+        return data.size();
+     }
 }

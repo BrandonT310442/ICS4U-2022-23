@@ -63,7 +63,7 @@ public class IntLinkedList {
     }
 
     public boolean isEmpty(){
-        return head.getLink() == null;
+        return head == null;
     }
 
     public Integer remove(Integer data) {
