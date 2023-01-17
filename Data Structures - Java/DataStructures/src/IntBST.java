@@ -1,14 +1,20 @@
 public class IntBST {
     private IntBSTNode root;
-
     public IntBST(){
         this.root = null;
+    }
+
+    public class Global {
+        public static String res = "";
+        public static String res2 = "";
+        public static String res3 = "";
     }
 
     public IntBSTNode add(Integer val){
         if (root == null){
         root = new IntBSTNode(val);
         }
+
         return addRescursive(root, val);
     }
 
@@ -16,19 +22,19 @@ public class IntBST {
         return findRecursive(root, val);
     }
 
-    public void preOrderPrintTraversal(){
-        preOrderPrintTraversal(root);
+    public String preOrderPrintTraversal(){
+        return preOrderPrintTraversal(root);
     }
 
-    public void postOrderPrintTraversal(){
-        postOrderPrintTraversal(root);
+    public String postOrderPrintTraversal(){
+        return postOrderPrintTraversal(root);
     }
-    public void inOrderPrintTraversal(){
-        inOrderPrintTraversal(root);
+    public String inOrderPrintTraversal(){
+        return inOrderPrintTraversal(root);
     }
 
-    private void preOrderPrintTraversal(IntBSTNode root){
-        System.out.println(root.getValue());
+    private String preOrderPrintTraversal(IntBSTNode root){
+     Global.res = Global.res+root.getValue()+" ";
         if (root.hasLeftChild()){
             preOrderPrintTraversal(root.getLeftChild());
         }
@@ -37,10 +43,12 @@ public class IntBST {
             preOrderPrintTraversal(root.getRightChild());
 
         }
+
+        return Global.res;
         
     }
 
-    private void postOrderPrintTraversal(IntBSTNode root){
+    private String postOrderPrintTraversal(IntBSTNode root){
         if (root.hasLeftChild()){
             postOrderPrintTraversal(root.getLeftChild());
         }
@@ -49,44 +57,38 @@ public class IntBST {
             postOrderPrintTraversal(root.getRightChild());
 
         }
-        System.out.println(root.getValue());
+        Global.res2 = Global.res2 + root.getValue()+" ";
 
-        
+        return Global.res2;
     }
 
-    private void inOrderPrintTraversal(IntBSTNode root){
+    private String inOrderPrintTraversal(IntBSTNode root){
 
         if (root.hasLeftChild()){
             inOrderPrintTraversal(root.getLeftChild());
         }
-        System.out.println(root.getValue());
+        Global.res3 = Global.res3 + root.getValue()+" ";
 
 
         if (root.hasRightChild()){
             inOrderPrintTraversal(root.getRightChild());
 
         }
+
+        return Global.res3;
         
     }
 
     private IntBSTNode findRecursive(IntBSTNode root, Integer val) {
-        if (root.getValue() == val){
-            return root;
-        }else if (val < root.getValue()){
-            if (root.hasLeftChild()){
-                addRescursive(root.getLeftChild(), val);
-            }else{
-               return null;
-            }
-        }else if (val > root.getValue()){
-            if (root.hasRightChild()){
-                addRescursive(root.getLeftChild(), val);
-            }else{
-               return null;
-            }
-        }
-        return null;
-    }
+        if (root.getValue() == val)
+           return root;
+        else if (root.hasLeftChild() && root.getValue() > val)
+           return findRecursive(root.getLeftChild(), val);
+        else if (root.hasRightChild() && root.getValue() < val)
+           return findRecursive(root.getRightChild(), val);
+        else
+           return null;
+     }
 
     /**
      * 
