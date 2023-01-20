@@ -23,13 +23,16 @@ public class IntBST {
     }
 
     public String preOrderPrintTraversal(){
+        Global.res = "";
         return preOrderPrintTraversal(root);
     }
 
     public String postOrderPrintTraversal(){
+        Global.res2 = "";
         return postOrderPrintTraversal(root);
     }
     public String inOrderPrintTraversal(){
+        Global.res3 = "";
         return inOrderPrintTraversal(root);
     }
 
@@ -90,6 +93,59 @@ public class IntBST {
            return null;
      }
 
+     private IntBSTNode findLargest(IntBSTNode root){
+        return findLargestRecursive();
+     }
+
+    private IntBSTNode findLargestRecursive() {
+        if (root.getRightChild() != null && root.getRightChild().getRightChild()!= null){
+            return findLargest(root.getRightChild());
+        }else if (root.getRightChild() != null){
+            return root.getRightChild();
+        }   
+        return root;
+        
+    }
+
+    public void remove (Integer val){
+        root = removeRecursive(root, val);
+    }
+
+    
+
+    private IntBSTNode removeRecursive(IntBSTNode root, Integer val) {
+        if (root == null)
+        return root;
+
+     if (val < root.getValue()) {
+        root.setLeftChild(removeRecursive(root.getLeftChild(), val));
+     } else if (val > root.getValue()) {
+        root.setRightChild(removeRecursive(root.getRightChild(), val));
+     } else {
+        if (root.getLeftChild() == null) {
+           return root.getRightChild();
+        } else if (root.getRightChild() == null) {
+           return root.getLeftChild();
+        } else {
+           Integer biggest = findSmallest(root.getRightChild());
+           root.setValue(biggest);
+           root.setRightChild(removeRecursive(root.getRightChild(), root.getValue()));
+        }
+     }
+
+     return root;
+    }
+
+    private Integer findSmallest(IntBSTNode root) {
+        Integer min = root.getValue();
+  
+        while (root.getLeftChild() != null) {
+           min = root.getLeftChild().getValue();
+           root = root.getLeftChild();
+        }
+  
+        return min;
+     }
     /**
      * 
      * @param root root of the subtree we are adding val to

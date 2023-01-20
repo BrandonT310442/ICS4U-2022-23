@@ -38,6 +38,13 @@ public class TestIntBST {
             testPassed++;
          }
 
+         if (!removeTest()){
+            System.out.println("Test Failed: removeTest");
+            testFailed++;
+         }else{
+            testPassed++;
+         }
+
          
 
         System.out.println("Tests Passed: " + testPassed + ". Tests Failed: " + testFailed);
@@ -46,7 +53,24 @@ public class TestIntBST {
     }
 
 
-    private static boolean preOrderTraversalTest() {
+    private static boolean removeTest() {
+      IntBST bst = prepareList();
+      bst.remove(11);
+     if (!(bst.inOrderPrintTraversal().equals("1 3 6 7 8 9 13 ")))
+     return false;
+     bst.remove(1);
+     if (!(bst.inOrderPrintTraversal().equals("3 6 7 8 9 13 ")))
+     return false;
+     bst.remove(13);
+     if (!(bst.inOrderPrintTraversal().equals("3 6 7 8 9 ")))
+     return false;
+
+     return true;
+      
+   }
+
+
+   private static boolean preOrderTraversalTest() {
         return prepareList().preOrderPrintTraversal().equals("6 3 1 8 7 13 9 11 ");
    }
 
