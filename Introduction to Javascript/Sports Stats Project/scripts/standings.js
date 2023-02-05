@@ -179,7 +179,7 @@ async function runCode(){
   while (numPages == true){
           // Fetches the data the await makes it so that it waits for it to get the data before the rest of the code executes
 
-  var data = await fetchAsync('https://www.balldontlie.io/api/v1/games?seasons[]=2022&start_date=2022-09-02&end_date=2022/'+datefinal+'&per_page=100'+'&page='+count)
+  var data = await fetchAsync('https://www.balldontlie.io/api/v1/games?seasons[]=2022&start_date=2022-09-02&end_date=2024/'+datefinal+'&per_page=100'+'&page='+count)
   var arrs = data.data;
   console.log(arrs.length);
   for (let index = 0; index < arrs.length; index++) {

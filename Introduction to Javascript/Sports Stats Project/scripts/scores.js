@@ -63,8 +63,17 @@ function onload(){
       div.setAttribute('class',"slide")
       let span = document.createElement("span");
       span.setAttribute("class","slide__text");
-      let text = incrementDate(startofSeason,i)
-      span.textContent = text.substring(0,text.lastIndexOf("2")+1);
+      let d = new Date(incrementDate(startofSeason,i));
+      let text = d.toUTCString().toString();
+      if (d.getYear() ==123){
+        span.textContent = text.substring(0,text.lastIndexOf("3")+1);
+        console.log(text);
+        console.log(text.substring(0,text.lastIndexOf("3")+1));
+      }else{
+        span.textContent = text.substring(0,text.lastIndexOf("2")+1);
+        console.log(text);
+        console.log(text.substring(0,text.lastIndexOf("2")+1));
+      }
       let a = document.createElement("a");
       a.setAttribute("class", "slide__prev");
       if (num-1 <= 0){
@@ -452,7 +461,7 @@ let gamesPush = []
     while (numPages == true){
             // Fetches the data the await makes it so that it waits for it to get the data before the rest of the code executes
 
-    var data = await fetchAsync('https://www.balldontlie.io/api/v1/games?seasons[]=2022&start_date=2022-09-02&end_date=2022/'+datefinal+'&per_page=100'+'&page='+count)
+    var data = await fetchAsync('https://www.balldontlie.io/api/v1/games?seasons[]=2022&start_date=2022-09-02&end_date=2024/'+datefinal+'&per_page=100'+'&page='+count)
     var arrs = data.data;
     currpage = data.meta.current_page
     finalpage = data.meta.total_pages
